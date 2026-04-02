@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ketsy Online | Digital Marketing Agency</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --blue:    #2563EB;
+      --blue-dk: #1A4FC4;
+      --blue-lt: #EEF3FF;
+      --coral:   #FF5C2E;
+      --dark:    #0A0F1E;
+      --grey:    #6B7280;
+      --border:  #E5E7EB;
+      --bg:      #F9FAFB;
+      --white:   #FFFFFF;
+      --r:       14px;
+      --rl:      22px;
+      --sh:      0 4px 24px rgba(10,15,30,0.08);
+      --sh-lg:   0 12px 48px rgba(10,15,30,0.14);
+      --sh-b:    0 8px 32px rgba(37,99,235,0.25);
+      --t:       all 0.28s cubic-bezier(.4,0,.2,1);
+      --f:       'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--f); color: var(--dark); background: var(--white); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+    .sec { padding: 88px 0; }
+    .sec-bg { background: var(--bg); }
+
+    /* TYPE */
+    h1,h2,h3 { font-weight: 800; line-height: 1.2; letter-spacing: -0.5px; }
+    h1 { font-size: clamp(2.6rem, 5.5vw, 4rem); letter-spacing: -1.2px; }
+    h2 { font-size: clamp(1.9rem, 3.5vw, 2.6rem); letter-spacing: -0.6px; }
+    h3 { font-size: 1.1rem; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--blue-lt); color: var(--blue);
+      font-size: 11px; font-weight: 700; letter-spacing: 1.8px;
+      text-transform: uppercase; padding: 6px 14px; border-radius: 30px;
+      margin-bottom: 16px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 30px; border-radius: 50px; font-weight: 700;
+      font-size: 0.92rem; cursor: pointer; border: none; transition: var(--t);
+    }
+    .btn-blue  { background: var(--blue); color: var(--white); }
+    .btn-blue:hover  { background: var(--blue-dk); transform: translateY(-2px); box-shadow: var(--sh-b); }
+    .btn-coral { background: var(--coral); color: var(--white); }
+    .btn-coral:hover { background: #e64d20; transform: translateY(-2px); }
+    .btn-out   { background: transparent; border: 2px solid var(--border); color: var(--dark); }
+    .btn-out:hover   { border-color: var(--blue); color: var(--blue); }
+    .btn-sm    { padding: 10px 22px; font-size: 0.84rem; }
+
+    /* SECTION HEADER */
+    .sh { margin-bottom: 52px; }
+    .sh p { color: var(--grey); font-size: 1rem; max-width: 520px; margin-top: 10px; }
+    .sh.cx { text-align: center; }
+    .sh.cx p { margin: 10px auto 0; }
+
+    /* FADE ANIMATIONS */
+    .fu { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fu.on { opacity: 1; transform: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-in {
+      max-width: 1140px; margin: 0 auto; padding: 0 28px;
+      display: flex; align-items: center; justify-content: space-between; height: 66px;
+    }
+    .logo { font-size: 1.35rem; font-weight: 900; color: var(--dark); }
+    .logo em { color: var(--blue); font-style: normal; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.86rem; font-weight: 600; color: var(--grey); transition: var(--t); }
+    .nav-links a:hover { color: var(--blue); }
+    .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; }
+    #mm {
+      display: none; position: fixed; top: 66px; left: 0; right: 0;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 24px 28px; z-index: 998;
+    }
+    #mm ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+    #mm a { font-size: 1rem; font-weight: 700; color: var(--dark); }
+    @media (max-width: 820px) { .nav-links, .nav-right .btn { display: none; } .ham { display: flex; } }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; padding-top: 66px;
+      display: flex; align-items: center;
+      background: var(--white); position: relative; overflow: hidden;
+    }
+    .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; pointer-events: none; }
+    .b1 { width: 550px; height: 550px; background: #DBEAFE; top: -120px; right: -80px; }
+    .b2 { width: 350px; height: 350px; background: #FDE8E0; bottom: -60px; left: -60px; }
+
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: 60px; align-items: center; padding: 72px 0; position: relative; z-index: 2;
+    }
+    @media (max-width: 840px) { .hero-grid { grid-template-columns: 1fr; } }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue-lt); color: var(--blue);
+      font-size: 12px; font-weight: 700; padding: 7px 16px;
+      border-radius: 30px; margin-bottom: 22px;
+    }
+    .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); animation: pulse 1.8s infinite; }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.6);opacity:0.5} }
+
+    .hero-h { margin-bottom: 18px; }
+    .rw { color: var(--blue); display: inline-block; transition: opacity 0.3s ease, transform 0.3s ease; }
+
+    .hero-sub { color: var(--grey); font-size: 1.1rem; line-height: 1.75; max-width: 480px; margin-bottom: 34px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+
+    .trust { display: flex; align-items: center; gap: 14px; }
+    .avatars { display: flex; }
+    .av {
+      width: 36px; height: 36px; border-radius: 50%; border: 3px solid var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 800; color: var(--white); margin-left: -10px;
+    }
+    .av:first-child { margin-left: 0; }
+    .trust-txt { font-size: 0.82rem; color: var(--grey); }
+    .trust-txt strong { color: var(--dark); display: block; }
+
+    /* Hero card */
+    .hcard {
+      background: var(--dark); border-radius: 20px; padding: 28px;
+      box-shadow: var(--sh-lg); position: relative; overflow: hidden;
+    }
+    .hcard::before {
+      content:''; position: absolute; top:0; left:0; right:0; height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--coral));
+    }
+    .hc-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+    .hc-big { font-size: 2.2rem; font-weight: 900; color: var(--white); }
+    .hc-tag { display: inline-block; background: rgba(37,99,235,0.25); color: #93C5FD; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-left: 10px; vertical-align: middle; }
+    .hc-bars { display: flex; flex-direction: column; gap: 11px; margin: 20px 0; }
+    .hc-bar-row { display: flex; align-items: center; gap: 10px; }
+    .hc-bar-lbl { font-size: 0.76rem; color: rgba(255,255,255,0.5); width: 62px; flex-shrink: 0; }
+    .hc-track { flex: 1; height: 5px; background: rgba(255,255,255,0.07); border-radius: 3px; overflow: hidden; }
+    .hc-fill { height: 100%; border-radius: 3px; }
+    .hc-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .hc-pill { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); font-size: 0.75rem; padding: 4px 10px; border-radius: 16px; }
+
+    .float-card {
+      position: absolute; background: var(--white); border-radius: 12px;
+      padding: 12px 16px; box-shadow: var(--sh-lg);
+      display: flex; align-items: center; gap: 10px;
+      animation: bob 3.5s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    .fc1 { top: -16px; right: -20px; }
+    .fc2 { bottom: -14px; left: -16px; animation-delay: 1.3s; }
+    .fc-ico { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .fci-b { background: var(--blue-lt); }
+    .fci-c { background: #FFF0EB; }
+    .fc-num { font-size: 1.1rem; font-weight: 900; color: var(--dark); line-height: 1; }
+    .fc-lbl { font-size: 0.68rem; color: var(--grey); margin-top: 1px; }
+
+    /* Stats row */
+    .stats-row {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0;
+      background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .stat-box {
+      padding: 36px 48px; text-align: center; flex: 1; min-width: 140px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat-box:last-child { border-right: none; }
+    .sn { font-size: 2.2rem; font-weight: 900; color: var(--white); line-height: 1; }
+    .sn sup { font-size: 1rem; color: var(--coral); }
+    .sl { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 5px; }
+    @media (max-width: 600px) { .stat-box { padding: 24px 20px; } }
+
+    /* ── SERVICES ── */
+    .svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
+    @media (max-width: 680px) { .svc-grid { grid-template-columns: 1fr; } }
+    .svc {
+      border: 1px solid var(--border); border-radius: var(--rl);
+      padding: 32px 28px; background: var(--white);
+      transition: var(--t); box-shadow: 0 1px 4px rgba(10,15,30,0.05);
+      position: relative; overflow: hidden;
+    }
+    .svc::after {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, var(--blue), #818CF8);
+      transform: scaleX(0); transform-origin: left; transition: var(--t);
+    }
+    .svc:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: transparent; }
+    .svc:hover::after { transform: scaleX(1); }
+    .svc-ico { font-size: 1.8rem; margin-bottom: 16px; }
+    .svc h3 { color: var(--dark); margin-bottom: 8px; }
+    .svc p { color: var(--grey); font-size: 0.9rem; line-height: 1.65; margin-bottom: 14px; }
+    .svc ul { list-style: none; }
+    .svc li { font-size: 0.83rem; color: var(--grey); padding: 4px 0 4px 16px; position: relative; }
+    .svc li::before { content:'→'; position: absolute; left:0; color: var(--blue); font-size: 0.8rem; font-weight: 700; }
+
+    /* ── PORTFOLIO ── */
+    .pf-filters { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 36px; }
+    .pf-btn {
+      padding: 8px 18px; border-radius: 30px; font-size: 0.83rem;
+      font-weight: 700; cursor: pointer; transition: var(--t);
+      border: 1.5px solid var(--border); background: transparent; color: var(--grey);
+    }
+    .pf-btn.on, .pf-btn:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .pf-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    @media (max-width: 860px) { .pf-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .pf-grid { grid-template-columns: 1fr; } }
+    .pf-card {
+      border-radius: var(--r); border: 1px solid var(--border);
+      overflow: hidden; transition: var(--t); background: var(--white);
+    }
+    .pf-card:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: transparent; }
+    .pf-thumb {
+      aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; font-size: 2.4rem;
+    }
+    .pf-over {
+      position: absolute; inset:0; background: rgba(10,15,30,0);
+      display: flex; align-items: center; justify-content: center; transition: var(--t);
+    }
+    .pf-card:hover .pf-over { background: rgba(10,15,30,0.5); }
+    .pf-over span {
+      background: var(--white); color: var(--dark); font-size: 0.82rem; font-weight: 700;
+      padding: 8px 18px; border-radius: 24px;
+      opacity: 0; transform: scale(0.85); transition: var(--t);
+    }
+    .pf-card:hover .pf-over span { opacity: 1; transform: scale(1); }
+    .pf-body { padding: 16px 18px 20px; }
+    .pf-cat { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 5px; display: block; }
+    .pf-title { font-size: 0.95rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .pf-desc { font-size: 0.82rem; color: var(--grey); }
+    .pf-add {
+      border-radius: var(--r); border: 2px dashed var(--border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; padding: 32px; text-align: center; transition: var(--t); cursor: pointer; min-height: 220px;
+    }
+    .pf-add:hover { border-color: var(--blue); background: var(--blue-lt); }
+    .pf-add p { font-size: 0.88rem; font-weight: 700; color: var(--dark); }
+    .pf-add span { font-size: 0.8rem; color: var(--grey); }
+
+    /* ── TEAM ── */
+    .team-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; max-width: 700px; margin: 0 auto; }
+    @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
+    .tc {
+      border: 1px solid var(--border); border-radius: var(--rl);
+      padding: 36px 28px; text-align: center; background: var(--white);
+      transition: var(--t);
+    }
+    .tc:hover { transform: translateY(-6px); box-shadow: var(--sh-lg); border-color: var(--blue); }
+    .tc-av {
+      width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; font-weight: 900; color: var(--white);
+    }
+    .tc-name { font-size: 1.05rem; font-weight: 800; color: var(--dark); }
+    .tc-role { font-size: 0.82rem; font-weight: 700; color: var(--blue); margin: 4px 0 10px; }
+    .tc-bio { font-size: 0.86rem; color: var(--grey); line-height: 1.6; }
+    .tc-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 14px; }
+    .tc-tag { background: var(--blue-lt); color: var(--blue); font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+
+    /* ── PRICING ── */
+    .pr-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    @media (max-width: 820px) { .pr-grid { grid-template-columns: 1fr; } }
+    .pr {
+      border: 1px solid var(--border); border-radius: var(--rl);
+      padding: 36px 28px; background: var(--white);
+      transition: var(--t); position: relative;
+    }
+    .pr:hover:not(.pr-feat) { transform: translateY(-5px); box-shadow: var(--sh-lg); }
+    .pr-feat {
+      background: var(--dark); border-color: transparent;
+      transform: scale(1.04);
+      box-shadow: 0 20px 60px rgba(10,15,30,0.28);
+    }
+    .pr-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--coral); color: var(--white);
+      font-size: 0.68rem; font-weight: 900; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 20px;
+    }
+    .pr-type { font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+    .pr-feat .pr-type { color: #60A5FA; }
+    .pr h3 { color: var(--dark); margin-bottom: 6px; }
+    .pr-feat h3 { color: var(--white); }
+    .pr-desc { font-size: 0.86rem; color: var(--grey); margin-bottom: 22px; }
+    .pr-feat .pr-desc { color: rgba(255,255,255,0.5); }
+    .pr-price { font-size: 1.6rem; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
+    .pr-feat .pr-price { color: var(--white); }
+    .pr-price span { font-size: 0.88rem; font-weight: 400; color: var(--grey); }
+    .pr-feat .pr-price span { color: rgba(255,255,255,0.45); }
+    .pr ul { list-style: none; margin-bottom: 28px; }
+    .pr li {
+      font-size: 0.86rem; color: var(--grey); padding: 8px 0;
+      border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 9px;
+    }
+    .pr-feat li { border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); }
+    .pr li::before { content:'✓'; color: var(--blue); font-weight: 900; flex-shrink: 0; }
+    .pr-feat li::before { color: #60A5FA; }
+
+    /* ── CONTACT ── */
+    .ct-wrap { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; }
+    @media (max-width: 820px) { .ct-wrap { grid-template-columns: 1fr; } }
+    .ct-info h2 { margin-bottom: 10px; }
+    .ct-info > p { color: var(--grey); font-size: 1rem; margin-bottom: 32px; }
+    .ct-row {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+      padding: 14px 18px; background: var(--white);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .ct-ico { width: 38px; height: 38px; border-radius: 9px; background: var(--blue-lt); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .ct-row p:first-child { font-size: 0.72rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; }
+    .ct-row p:last-child { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
+    .soc-row { display: flex; gap: 9px; margin-top: 20px; }
+    .soc {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: var(--bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; transition: var(--t);
+    }
+    .soc:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+    .ct-form { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 36px; box-shadow: var(--sh); }
+    .ct-form h3 { font-size: 1.2rem; color: var(--dark); margin-bottom: 22px; }
+    .fr2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 500px) { .fr2 { grid-template-columns: 1fr; } }
+    .fg { margin-bottom: 14px; }
+    .fg label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 9px; padding: 11px 14px; color: var(--dark);
+      font-family: var(--f); font-size: 0.9rem; outline: none; transition: var(--t);
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--blue); background: var(--blue-lt); }
+    .fg textarea { resize: vertical; min-height: 100px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 52px 0 28px; }
+    .ft-in { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 36px; margin-bottom: 44px; }
+    .ft-brand .logo { color: var(--white); display: block; margin-bottom: 10px; }
+    .ft-brand .logo em { color: var(--blue); }
+    .ft-brand p { font-size: 0.84rem; color: rgba(255,255,255,0.4); max-width: 220px; line-height: 1.65; }
+    .ft-links { display: flex; gap: 52px; flex-wrap: wrap; }
+    .ft-col h4 { font-size: 0.82rem; font-weight: 700; color: var(--white); margin-bottom: 14px; letter-spacing: 0.3px; }
+    .ft-col ul { list-style: none; }
+    .ft-col li { margin-bottom: 9px; }
+    .ft-col a { font-size: 0.83rem; color: rgba(255,255,255,0.4); transition: var(--t); }
+    .ft-col a:hover { color: var(--blue); }
+    .ft-bot { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .ft-bot p { font-size: 0.8rem; color: rgba(255,255,255,0.28); }
+
+    /* BACK TO TOP */
+    #btt {
+      position: fixed; bottom: 22px; right: 22px; z-index: 900;
+      width: 42px; height: 42px; border-radius: 11px;
+      background: var(--blue); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; cursor: pointer; box-shadow: var(--sh-b);
+      opacity: 0; pointer-events: none; transition: var(--t);
+    }
+    #btt.on { opacity: 1; pointer-events: auto; }
+    #btt:hover { background: var(--blue-dk); transform: scale(1.08); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a href="#hero" class="logo">Ketsy <em>Online</em></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-blue btn-sm">Get Started</a>
+    </div>
+    <div class="ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div id="mm">
+  <ul>
+    <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+    <li><a href="#team" onclick="closeMenu()">Team</a></li>
+    <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    <li style="margin-top:8px;"><a href="#contact" onclick="closeMenu()" class="btn btn-blue" style="width:100%;justify-content:center;">Get Started</a></li>
+  </ul>
+</div>
+
+<!-- 1. HERO -->
+<section id="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="fu">
+        <div class="eyebrow"><div class="dot"></div>Ghana's Digital Marketing Agency</div>
+        <h1 class="hero-h">We Build Brands<br>That <span class="rw" id="rw">Convert.</span></h1>
+        <p class="hero-sub">Full-service digital marketing for brands ready to grow. Bold strategy, sharp creative, measurable results.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-coral">Book a Free Call →</a>
+          <a href="#portfolio" class="btn btn-out">See Our Work</a>
+        </div>
+        <div class="trust">
+          <div class="avatars">
+            <div class="av" style="background:linear-gradient(135deg,var(--blue),#7C3AED)">K</div>
+            <div class="av" style="background:linear-gradient(135deg,var(--coral),#f59e0b)">A</div>
+            <div class="av" style="background:linear-gradient(135deg,#7C3AED,var(--blue))">M</div>
+          </div>
+          <div class="trust-txt">
+            <strong>8+ brands trust Ketsy Online</strong>
+            to manage their digital presence
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;" class="fu">
+        <div class="hcard">
+          <div class="hc-lbl">Campaign Performance · Live</div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;">
+            <div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);margin-bottom:4px;">Total Reach</div>
+              <div class="hc-big">100K<sup style="font-size:1rem">+</sup> <span class="hc-tag">↑ 184%</span></div>
+            </div>
+          </div>
+          <div class="hc-bars">
+            <div class="hc-bar-row"><div class="hc-bar-lbl">Instagram</div><div class="hc-track"><div class="hc-fill" style="width:88%;background:linear-gradient(90deg,#2563EB,#818CF8);"></div></div></div>
+            <div class="hc-bar-row"><div class="hc-bar-lbl">TikTok</div><div class="hc-track"><div class="hc-fill" style="width:74%;background:linear-gradient(90deg,#FF5C2E,#f59e0b);"></div></div></div>
+            <div class="hc-bar-row"><div class="hc-bar-lbl">LinkedIn</div><div class="hc-track"><div class="hc-fill" style="width:45%;background:linear-gradient(90deg,#7C3AED,#2563EB);"></div></div></div>
+          </div>
+          <div class="hc-pills">
+            <span class="hc-pill">📱 Social Media</span>
+            <span class="hc-pill">🌐 Web Design</span>
+            <span class="hc-pill">🎬 Video</span>
+            <span class="hc-pill">🖌️ Branding</span>
+          </div>
+        </div>
+        <div class="float-card fc1">
+          <div class="fc-ico fci-b">🚀</div>
+          <div><div class="fc-num">+340%</div><div class="fc-lbl">Avg. engagement lift</div></div>
+        </div>
+        <div class="float-card fc2">
+          <div class="fc-ico fci-c">⭐</div>
+          <div><div class="fc-num">98%</div><div class="fc-lbl">Client retention</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-row">
+  <div class="stat-box"><div class="sn">20<sup>+</sup></div><div class="sl">Campaigns Delivered</div></div>
+  <div class="stat-box"><div class="sn">5<sup>+</sup></div><div class="sl">Years Experience</div></div>
+  <div class="stat-box"><div class="sn">8<sup>+</sup></div><div class="sl">Active Brands</div></div>
+  <div class="stat-box"><div class="sn">98<sup>%</sup></div><div class="sl">Client Retention</div></div>
+</div>
+
+<!-- 2. SERVICES -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="sh fu">
+      <span class="chip">Services</span>
+      <h2>What We Do</h2>
+      <p>Four core services. One integrated team. Focused entirely on growing your brand.</p>
+    </div>
+    <div class="svc-grid fu">
+      <div class="svc">
+        <div class="svc-ico">📱</div>
+        <h3>Social Media Management</h3>
+        <p>Platform-specific strategies that build real audiences and drive engagement on Instagram, TikTok, and LinkedIn.</p>
+        <ul>
+          <li>Content calendars & community management</li>
+          <li>Short-form video & photography</li>
+          <li>Growth & analytics reporting</li>
+        </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-ico">🌐</div>
+        <h3>Website Design & Management</h3>
+        <p>Fast, conversion-focused websites built mobile-first — with ongoing SEO, maintenance, and security.</p>
+        <ul>
+          <li>WordPress, Shopify & custom builds</li>
+          <li>UI/UX design & landing pages</li>
+          <li>Ongoing maintenance & optimization</li>
+        </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-ico">🖌️</div>
+        <h3>Brand Management</h3>
+        <p>We build brands people recognize and trust — from logo to voice to reputation.</p>
+        <ul>
+          <li>Logo & visual identity systems</li>
+          <li>Brand voice & style guides</li>
+          <li>Reputation management & PR</li>
+        </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-ico">🎬</div>
+        <h3>Content Production</h3>
+        <p>Professional photo and video that stops the scroll and tells your brand story with real impact.</p>
+        <ul>
+          <li>Commercial photography & videography</li>
+          <li>Reels, TikToks & YouTube content</li>
+          <li>Professional editing & colour grading</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PORTFOLIO -->
+<section id="portfolio" class="sec sec-bg">
+  <div class="wrap">
+    <div class="sh fu" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
+      <div>
+        <span class="chip">Portfolio</span>
+        <h2 style="margin-bottom:0;">Our Work</h2>
+      </div>
+      <a href="#contact" class="btn btn-out btn-sm">Start Your Project →</a>
+    </div>
+    <div class="pf-filters fu">
+      <button class="pf-btn on" onclick="filterPF('all',this)">All</button>
+      <button class="pf-btn" onclick="filterPF('brand',this)">Branding</button>
+      <button class="pf-btn" onclick="filterPF('web',this)">Websites</button>
+      <button class="pf-btn" onclick="filterPF('social',this)">Social Media</button>
+      <button class="pf-btn" onclick="filterPF('video',this)">Video</button>
+    </div>
+    <div class="pf-grid fu" id="pfg">
+      <div class="pf-card" data-cat="brand">
+        <div class="pf-thumb" style="background:linear-gradient(135deg,#EEF3FF,#DBEAFE);">🖌️<div class="pf-over"><span>View Project</span></div></div>
+        <div class="pf-body">
+          <span class="pf-cat" style="color:var(--blue)">Branding</span>
+          <div class="pf-title">Brand Identity — Agro-Export Co.</div>
+          <div class="pf-desc">Full visual identity: logo, palette, typography & brand guidelines.</div>
+        </div>
+      </div>
+      <div class="pf-card" data-cat="web">
+        <div class="pf-thumb" style="background:linear-gradient(135deg,#FFF0EB,#FDE8E0);">🌐<div class="pf-over"><span>View Project</span></div></div>
+        <div class="pf-body">
+          <span class="pf-cat" style="color:var(--coral)">Website</span>
+          <div class="pf-title">E-Commerce — Fashion Boutique</div>
+          <div class="pf-desc">Shopify store build — 220% uplift in online sales in 60 days.</div>
+        </div>
+      </div>
+      <div class="pf-card" data-cat="social">
+        <div class="pf-thumb" style="background:linear-gradient(135deg,#EDE9FE,#DDD6FE);">📱<div class="pf-over"><span>View Project</span></div></div>
+        <div class="pf-body">
+          <span class="pf-cat" style="color:#7C3AED">Social Media</span>
+          <div class="pf-title">Social Growth — Music Label</div>
+          <div class="pf-desc">Grew Instagram & TikTok from 4K to 87K followers organically.</div>
+        </div>
+      </div>
+      <div class="pf-card" data-cat="video">
+        <div class="pf-thumb" style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5);">🎬<div class="pf-over"><span>View Project</span></div></div>
+        <div class="pf-body">
+          <span class="pf-cat" style="color:#059669">Video</span>
+          <div class="pf-title">Brand TVC — FMCG Launch</div>
+          <div class="pf-desc">60-second TVC + 6 social cut-downs for a consumer goods launch.</div>
+        </div>
+      </div>
+      <div class="pf-card" data-cat="brand">
+        <div class="pf-thumb" style="background:linear-gradient(135deg,#FEF3C7,#FDE68A);">✨<div class="pf-over"><span>View Project</span></div></div>
+        <div class="pf-body">
+          <span class="pf-cat" style="color:#D97706">Branding</span>
+          <div class="pf-title">Rebrand — Hospitality Group</div>
+          <div class="pf-desc">Complete visual rebrand across digital and print touchpoints.</div>
+        </div>
+      </div>
+      <div class="pf-add" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div style="font-size:2rem;">✦</div>
+        <p>Your Project Here</p>
+        <span>This could be your brand's success story</span>
+        <a class="btn btn-blue btn-sm" style="margin-top:4px;">Let's Talk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. TEAM -->
+<section id="team" class="sec">
+  <div class="wrap">
+    <div class="sh cx fu">
+      <span class="chip">The Team</span>
+      <h2>Two Founders. One Vision.</h2>
+      <p>Small, focused, and deeply committed to your results.</p>
+    </div>
+    <div class="team-grid fu">
+      <div class="tc">
+        <div class="tc-av" style="background:linear-gradient(135deg,var(--blue),#7C3AED)">K</div>
+        <div class="tc-name">Ketsy — Founder</div>
+        <div class="tc-role">Strategy & Creative Director</div>
+        <div class="tc-bio">Leads brand strategy, client partnerships, and creative direction. Deep knowledge of the Ghanaian market and a passion for brands that sell.</div>
+        <div class="tc-tags">
+          <span class="tc-tag">Brand Strategy</span>
+          <span class="tc-tag">Creative Direction</span>
+          <span class="tc-tag">Client Relations</span>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="tc-av" style="background:linear-gradient(135deg,var(--coral),#f59e0b)">Co</div>
+        <div class="tc-name">Co-Founder</div>
+        <div class="tc-role">Technical & Operations Lead</div>
+        <div class="tc-bio">Oversees web development, content production, and all technical delivery. Ensures every project is built to perform and scale.</div>
+        <div class="tc-tags">
+          <span class="tc-tag">Web Development</span>
+          <span class="tc-tag">Content Production</span>
+          <span class="tc-tag">Operations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PRICING -->
+<section id="pricing" class="sec sec-bg">
+  <div class="wrap">
+    <div class="sh cx fu">
+      <span class="chip">Pricing</span>
+      <h2>Simple, Transparent Plans</h2>
+      <p>Choose the model that fits. Every plan includes a dedicated account manager and monthly reports.</p>
+    </div>
+    <div class="pr-grid fu">
+      <div class="pr">
+        <div class="pr-type">Project-Based</div>
+        <h3>Starter</h3>
+        <div class="pr-desc">One-time deliverable — a website, brand identity, or campaign launch.</div>
+        <div class="pr-price">Custom <span>/ project</span></div>
+        <ul>
+          <li>Defined project scope</li>
+          <li>3-round revision policy</li>
+          <li>Final asset delivery</li>
+          <li>30-day post-launch support</li>
+        </ul>
+        <a href="#contact" class="btn btn-out" style="width:100%;justify-content:center;">Get a Quote</a>
+      </div>
+      <div class="pr pr-feat">
+        <div class="pr-badge">Most Popular</div>
+        <div class="pr-type">Retainer-Based</div>
+        <h3>Growth</h3>
+        <div class="pr-desc">A long-term partnership — we become your marketing team.</div>
+        <div class="pr-price">Monthly <span>retainer</span></div>
+        <ul>
+          <li>Social media (3 platforms)</li>
+          <li>Monthly content production</li>
+          <li>Website management</li>
+          <li>Monthly strategy & reporting call</li>
+        </ul>
+        <a href="#contact" class="btn btn-coral" style="width:100%;justify-content:center;">Start Retainer</a>
+      </div>
+      <div class="pr">
+        <div class="pr-type">Performance-Based</div>
+        <h3>Scale</h3>
+        <div class="pr-desc">For growth-stage brands — our fee is tied to your results.</div>
+        <div class="pr-price">Results <span>/ tied</span></div>
+        <ul>
+          <li>KPI-aligned fee structure</li>
+          <li>Full campaign management</li>
+          <li>Content production included</li>
+          <li>Weekly performance reviews</li>
+        </ul>
+        <a href="#contact" class="btn btn-out" style="width:100%;justify-content:center;">Let's Talk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CONTACT -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="ct-wrap">
+      <div class="fu">
+        <span class="chip">Contact</span>
+        <h2>Let's Build Something Great</h2>
+        <p>Book a free 30-minute strategy call. We'll reply within 24 hours.</p>
+        <div style="margin-top:28px;">
+          <div class="ct-row"><div class="ct-ico">📍</div><div><p>Location</p><p>Accra, Ghana 🇬🇭</p></div></div>
+          <div class="ct-row"><div class="ct-ico">📧</div><div><p>Email</p><p>hello@ketsyonline.com</p></div></div>
+          <div class="ct-row"><div class="ct-ico">📱</div><div><p>Phone / WhatsApp</p><p>+233 — — — — — —</p></div></div>
+        </div>
+        <div class="soc-row">
+          <a href="#" class="soc">📷</a>
+          <a href="#" class="soc">💼</a>
+          <a href="#" class="soc">🐦</a>
+          <a href="#" class="soc">🎵</a>
+        </div>
+      </div>
+      <div class="ct-form fu">
+        <h3>Book a Free Strategy Session</h3>
+        <div class="fr2">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="John"></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Mensah"></div>
+        </div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="john@yourcompany.com"></div>
+        <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+233 20 000 0000"></div>
+        <div class="fg">
+          <label>Service</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Social Media Management</option>
+            <option>Website Design & Management</option>
+            <option>Brand Management</option>
+            <option>Content Production</option>
+            <option>Full-Service Retainer</option>
+          </select>
+        </div>
+        <div class="fg"><label>Your Message</label><textarea placeholder="Tell us about your brand and goals..."></textarea></div>
+        <button class="btn btn-coral" style="width:100%;justify-content:center;font-size:0.95rem;padding:15px;" onclick="handleSend(this)">
+          Send Message →
+        </button>
+        <p style="color:var(--grey);font-size:0.76rem;text-align:center;margin-top:10px;">We reply within 24 hours. No spam, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-in">
+      <div class="ft-brand">
+        <a href="#hero" class="logo">Ketsy <em>Online</em></a>
+        <p>Full-service digital marketing for brands across Ghana and West Africa.</p>
+      </div>
+      <div class="ft-links">
+        <div class="ft-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Social Media</a></li>
+            <li><a href="#services">Web Design</a></li>
+            <li><a href="#services">Brand Management</a></li>
+            <li><a href="#services">Content Production</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#portfolio">Our Work</a></li>
+            <li><a href="#team">The Team</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>© 2025 Ketsy Online. All rights reserved. Built with ❤️ in Ghana.</p>
+      <p><a href="#" style="color:rgba(255,255,255,0.28);font-size:0.78rem;margin-right:16px;">Privacy Policy</a><a href="#" style="color:rgba(255,255,255,0.28);font-size:0.78rem;">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<div id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+  /* Rotating word */
+  const words = ['Convert.','Grow.','Lead.','Stand Out.'];
+  let wi = 0; const rw = document.getElementById('rw');
+  rw.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+  setInterval(() => {
+    rw.style.opacity='0'; rw.style.transform='translateY(-10px)';
+    setTimeout(() => {
+      wi = (wi+1)%words.length; rw.textContent = words[wi];
+      rw.style.opacity='1'; rw.style.transform='none';
+    }, 290);
+  }, 2400);
+
+  /* Scroll fade */
+  const io = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); }), {threshold:0.08});
+  document.querySelectorAll('.fu').forEach(el => io.observe(el));
+
+  /* Back to top */
+  window.addEventListener('scroll', () => document.getElementById('btt').classList.toggle('on', window.scrollY > 350));
+
+  /* Portfolio filter */
+  function filterPF(cat, btn) {
+    document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.pf-card').forEach(c => {
+      const show = cat==='all' || c.dataset.cat===cat;
+      c.style.opacity = show ? '1' : '0.2';
+      c.style.transform = show ? '' : 'scale(0.97)';
+      c.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+    });
+  }
+
+  /* Nav */
+  function toggleMenu() { const m=document.getElementById('mm'); m.style.display=m.style.display==='none'?'block':'none'; }
+  function closeMenu() { document.getElementById('mm').style.display='none'; }
+
+  /* Form */
+  function handleSend(btn) {
+    btn.textContent='✓ Sent! We\'ll be in touch within 24 hours.';
+    btn.style.background='#10B981'; btn.disabled=true;
+  }
+</script>
+</body>
+</html>
