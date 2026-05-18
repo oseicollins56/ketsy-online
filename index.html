@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ketsy Online — Ghana's full-service digital marketing agency. Social media management, web design, brand management, content production and paid media for brands across West Africa." />
   <title>Ketsy Online | Digital Marketing Agency</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,10 +79,12 @@
       max-width: 1140px; margin: 0 auto; padding: 0 28px;
       display: flex; align-items: center; justify-content: space-between; height: 66px;
     }
-    .logo { font-size: 1.35rem; font-weight: 900; color: var(--dark); }
-    .logo em { color: var(--blue); font-style: normal; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { font-size: 0.86rem; font-weight: 600; color: var(--grey); transition: var(--t); }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 48px; width: auto; display: block; }
+    .logo-text { font-size: 1.35rem; font-weight: 900; color: var(--dark); }
+    .logo-text em { color: var(--blue); font-style: normal; }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { font-size: 0.84rem; font-weight: 600; color: var(--grey); transition: var(--t); }
     .nav-links a:hover { color: var(--blue); }
     .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .ham span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; }
@@ -92,7 +95,7 @@
     }
     #mm ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
     #mm a { font-size: 1rem; font-weight: 700; color: var(--dark); }
-    @media (max-width: 820px) { .nav-links, .nav-right .btn { display: none; } .ham { display: flex; } }
+    @media (max-width: 900px) { .nav-links, .nav-right .btn { display: none; } .ham { display: flex; } }
 
     /* ── HERO ── */
     #hero {
@@ -186,9 +189,21 @@
     .sl { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 5px; }
     @media (max-width: 600px) { .stat-box { padding: 24px 20px; } }
 
+    /* ── CLIENT LOGOS ── */
+    .logos-strip { padding: 52px 0; border-bottom: 1px solid var(--border); }
+    .logos-lbl { text-align: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--grey); margin-bottom: 30px; }
+    .logos-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 18px; }
+    .logo-item {
+      padding: 10px 22px; border: 1px solid var(--border); border-radius: 10px;
+      font-size: 0.85rem; font-weight: 800; color: var(--grey); letter-spacing: 0.3px;
+      background: var(--white); transition: var(--t); opacity: 0.6;
+    }
+    .logo-item:hover { opacity: 1; border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+
     /* ── SERVICES ── */
-    .svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
-    @media (max-width: 680px) { .svc-grid { grid-template-columns: 1fr; } }
+    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    @media (max-width: 900px) { .svc-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .svc-grid { grid-template-columns: 1fr; } }
     .svc {
       border: 1px solid var(--border); border-radius: var(--rl);
       padding: 32px 28px; background: var(--white);
@@ -208,6 +223,28 @@
     .svc ul { list-style: none; }
     .svc li { font-size: 0.83rem; color: var(--grey); padding: 4px 0 4px 16px; position: relative; }
     .svc li::before { content:'→'; position: absolute; left:0; color: var(--blue); font-size: 0.8rem; font-weight: 700; }
+    .svc-cta { background: var(--blue-lt); border-color: rgba(37,99,235,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .svc-cta::after { display: none; }
+    .svc-cta:hover { background: #e0eaff; }
+
+    /* ── HOW WE WORK ── */
+    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; position: relative; }
+    @media (max-width: 860px) { .process-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 480px) { .process-grid { grid-template-columns: 1fr; } }
+    .process-line {
+      position: absolute; top: 35px; left: calc(12.5% + 4px); right: calc(12.5% + 4px);
+      height: 2px; background: linear-gradient(90deg,var(--blue),var(--coral)); z-index: 0;
+    }
+    @media (max-width: 860px) { .process-line { display: none; } }
+    .process-step { text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+    .ps-num {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: var(--white); border: 3px solid var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin: 0 auto 20px; box-shadow: var(--sh);
+    }
+    .process-step h3 { font-size: 1rem; color: var(--dark); margin-bottom: 10px; }
+    .process-step p { font-size: 0.85rem; color: var(--grey); line-height: 1.65; }
 
     /* ── PORTFOLIO ── */
     .pf-filters { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 36px; }
@@ -253,6 +290,27 @@
     .pf-add p { font-size: 0.88rem; font-weight: 700; color: var(--dark); }
     .pf-add span { font-size: 0.8rem; color: var(--grey); }
 
+    /* ── TESTIMONIALS ── */
+    .tm-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    @media (max-width: 860px) { .tm-grid { grid-template-columns: 1fr; } }
+    .tm {
+      border: 1px solid var(--border); border-radius: var(--rl);
+      padding: 32px 28px; background: var(--white);
+      position: relative; transition: var(--t);
+    }
+    .tm:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); }
+    .tm-quote { font-size: 3.5rem; color: var(--blue-lt); font-weight: 900; line-height: 1; margin-bottom: 4px; }
+    .tm-stars { color: #f59e0b; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 14px; }
+    .tm-text { font-size: 0.91rem; color: var(--grey); line-height: 1.75; margin-bottom: 22px; font-style: italic; }
+    .tm-author { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--border); }
+    .tm-av {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 900; color: var(--white); flex-shrink: 0;
+    }
+    .tm-name { font-size: 0.9rem; font-weight: 800; color: var(--dark); }
+    .tm-co { font-size: 0.78rem; color: var(--grey); margin-top: 2px; }
+
     /* ── TEAM ── */
     .team-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; max-width: 700px; margin: 0 auto; }
     @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
@@ -272,6 +330,19 @@
     .tc-bio { font-size: 0.86rem; color: var(--grey); line-height: 1.6; }
     .tc-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 14px; }
     .tc-tag { background: var(--blue-lt); color: var(--blue); font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+
+    /* ── TECH STACK ── */
+    .tools-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    @media (max-width: 820px) { .tools-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 480px) { .tools-grid { grid-template-columns: 1fr; } }
+    .tool-cat { border: 1px solid var(--border); border-radius: var(--r); padding: 22px 20px; background: var(--white); }
+    .tool-cat-hd { font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; display: flex; align-items: center; gap: 7px; }
+    .tool-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tool-pill {
+      background: var(--bg); border: 1px solid var(--border); color: var(--dark);
+      font-size: 0.76rem; font-weight: 700; padding: 5px 11px; border-radius: 20px; transition: var(--t);
+    }
+    .tool-pill:hover { background: var(--blue-lt); border-color: var(--blue); color: var(--blue); }
 
     /* ── PRICING ── */
     .pr-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
@@ -312,27 +383,46 @@
     .pr li::before { content:'✓'; color: var(--blue); font-weight: 900; flex-shrink: 0; }
     .pr-feat li::before { color: #60A5FA; }
 
+    /* ── FAQ ── */
+    .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; background: var(--white); transition: var(--t); }
+    .faq-item.open { border-color: var(--blue); }
+    .faq-q {
+      width: 100%; text-align: left; padding: 18px 22px; background: none; border: none;
+      font-family: var(--f); font-size: 0.97rem; font-weight: 700; color: var(--dark);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      transition: var(--t);
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-icon { font-size: 1.4rem; font-weight: 300; color: var(--blue); flex-shrink: 0; transition: transform 0.28s ease; line-height: 1; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 22px; font-size: 0.9rem; color: var(--grey); line-height: 1.75; }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+    .faq-divider { height: 1px; background: var(--border); margin: 0 22px; display: none; }
+    .faq-item.open .faq-divider { display: block; }
+
     /* ── CONTACT ── */
     .ct-wrap { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; }
     @media (max-width: 820px) { .ct-wrap { grid-template-columns: 1fr; } }
     .ct-info h2 { margin-bottom: 10px; }
     .ct-info > p { color: var(--grey); font-size: 1rem; margin-bottom: 32px; }
     .ct-row {
-      display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
       padding: 14px 18px; background: var(--white);
-      border: 1px solid var(--border); border-radius: 12px;
+      border: 1px solid var(--border); border-radius: 12px; transition: var(--t);
     }
+    .ct-row:hover { border-color: var(--blue); transform: translateX(4px); }
     .ct-ico { width: 38px; height: 38px; border-radius: 9px; background: var(--blue-lt); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
     .ct-row p:first-child { font-size: 0.72rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; }
     .ct-row p:last-child { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
-    .soc-row { display: flex; gap: 9px; margin-top: 20px; }
+    .soc-row { display: flex; gap: 9px; margin-top: 22px; }
     .soc {
-      width: 36px; height: 36px; border-radius: 9px;
+      width: 38px; height: 38px; border-radius: 9px;
       background: var(--bg); border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; transition: var(--t);
+      font-size: 0.95rem; transition: var(--t);
     }
-    .soc:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .soc:hover { background: var(--blue); color: var(--white); border-color: var(--blue); transform: translateY(-2px); }
 
     .ct-form { background: var(--white); border: 1px solid var(--border); border-radius: var(--rl); padding: 36px; box-shadow: var(--sh); }
     .ct-form h3 { font-size: 1.2rem; color: var(--dark); margin-bottom: 22px; }
@@ -354,6 +444,9 @@
     .ft-brand .logo { color: var(--white); display: block; margin-bottom: 10px; }
     .ft-brand .logo em { color: var(--blue); }
     .ft-brand p { font-size: 0.84rem; color: rgba(255,255,255,0.4); max-width: 220px; line-height: 1.65; }
+    .ft-contact { margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
+    .ft-contact a { font-size: 0.8rem; color: rgba(255,255,255,0.4); transition: var(--t); }
+    .ft-contact a:hover { color: var(--blue); }
     .ft-links { display: flex; gap: 52px; flex-wrap: wrap; }
     .ft-col h4 { font-size: 0.82rem; font-weight: 700; color: var(--white); margin-bottom: 14px; letter-spacing: 0.3px; }
     .ft-col ul { list-style: none; }
@@ -362,6 +455,26 @@
     .ft-col a:hover { color: var(--blue); }
     .ft-bot { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
     .ft-bot p { font-size: 0.8rem; color: rgba(255,255,255,0.28); }
+
+    /* ── WHATSAPP FLOAT ── */
+    #wa-float {
+      position: fixed; bottom: 76px; right: 22px; z-index: 900;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: #25D366; color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: var(--t);
+    }
+    #wa-float:hover { background: #1da851; transform: scale(1.1); }
+    #wa-float svg { width: 26px; height: 26px; fill: white; }
+    .wa-tooltip {
+      position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%);
+      background: var(--dark); color: var(--white);
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+      padding: 5px 11px; border-radius: 7px; pointer-events: none;
+      opacity: 0; transition: opacity 0.2s ease;
+    }
+    #wa-float:hover .wa-tooltip { opacity: 1; }
 
     /* BACK TO TOP */
     #btt {
@@ -381,12 +494,26 @@
 <!-- NAV -->
 <nav>
   <div class="nav-in">
-    <a href="#hero" class="logo">Ketsy <em>Online</em></a>
+    <a href="#hero" class="logo">
+      <svg viewBox="0 0 420 530" height="52" xmlns="http://www.w3.org/2000/svg" aria-label="Ketsy Online">
+        <polygon points="78,78 278,78 78,278" fill="#FF5C2E"/>
+        <polygon points="78,122 232,78 278,78 78,232" fill="#ffffff"/>
+        <text x="85" y="136" transform="rotate(-42,85,136)" font-family="'Arial Black','Arial',sans-serif" font-size="17" font-weight="900" fill="#0A0F1E" letter-spacing="2">ONLINE</text>
+        <rect x="78" y="78" width="88" height="430" fill="#2B2898"/>
+        <polygon points="166,250 388,78 388,162 166,338" fill="#2B2898"/>
+        <polygon points="166,316 388,508 308,508 166,400" fill="#2B2898"/>
+        <polygon points="320,78 388,78 388,230 354,230 354,148 320,148" fill="#2B2898"/>
+        <polygon points="294,118 388,78 388,172" fill="#2B2898"/>
+        <text x="68" y="516" font-family="'Arial Black','Arial',sans-serif" font-size="76" font-weight="900" font-style="italic" fill="#0A0F1E" letter-spacing="8">KETSY</text>
+      </svg>
+    </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="btn btn-out btn-sm" style="padding:8px 18px;">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -398,9 +525,11 @@
 <div id="mm">
   <ul>
     <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#process" onclick="closeMenu()">Process</a></li>
     <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
     <li><a href="#team" onclick="closeMenu()">Team</a></li>
     <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
+    <li><a href="#contact" onclick="closeMenu()">FAQ</a></li>
     <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     <li style="margin-top:8px;"><a href="#contact" onclick="closeMenu()" class="btn btn-blue" style="width:100%;justify-content:center;">Get Started</a></li>
   </ul>
@@ -451,6 +580,7 @@
             <span class="hc-pill">🌐 Web Design</span>
             <span class="hc-pill">🎬 Video</span>
             <span class="hc-pill">🖌️ Branding</span>
+            <span class="hc-pill">📊 Paid Ads</span>
           </div>
         </div>
         <div class="float-card fc1">
@@ -474,13 +604,28 @@
   <div class="stat-box"><div class="sn">98<sup>%</sup></div><div class="sl">Client Retention</div></div>
 </div>
 
+<!-- CLIENT LOGOS -->
+<div class="logos-strip">
+  <div class="wrap">
+    <p class="logos-lbl">Brands We've Worked With</p>
+    <div class="logos-row fu">
+      <div class="logo-item">Agro-Export Co.</div>
+      <div class="logo-item">Rhythm Label GH</div>
+      <div class="logo-item">The Fashion Vault</div>
+      <div class="logo-item">Palm &amp; Peak Hotels</div>
+      <div class="logo-item">Accra Eats</div>
+      <div class="logo-item">GoldCoast Finance</div>
+    </div>
+  </div>
+</div>
+
 <!-- 2. SERVICES -->
 <section id="services" class="sec">
   <div class="wrap">
     <div class="sh fu">
       <span class="chip">Services</span>
       <h2>What We Do</h2>
-      <p>Four core services. One integrated team. Focused entirely on growing your brand.</p>
+      <p>Five core services. One integrated team. Focused entirely on growing your brand.</p>
     </div>
     <div class="svc-grid fu">
       <div class="svc">
@@ -488,19 +633,19 @@
         <h3>Social Media Management</h3>
         <p>Platform-specific strategies that build real audiences and drive engagement on Instagram, TikTok, and LinkedIn.</p>
         <ul>
-          <li>Content calendars & community management</li>
-          <li>Short-form video & photography</li>
-          <li>Growth & analytics reporting</li>
+          <li>Content calendars &amp; community management</li>
+          <li>Short-form video &amp; photography</li>
+          <li>Growth &amp; analytics reporting</li>
         </ul>
       </div>
       <div class="svc">
         <div class="svc-ico">🌐</div>
-        <h3>Website Design & Management</h3>
+        <h3>Website Design &amp; Management</h3>
         <p>Fast, conversion-focused websites built mobile-first — with ongoing SEO, maintenance, and security.</p>
         <ul>
-          <li>WordPress, Shopify & custom builds</li>
-          <li>UI/UX design & landing pages</li>
-          <li>Ongoing maintenance & optimization</li>
+          <li>WordPress, Shopify &amp; custom builds</li>
+          <li>UI/UX design &amp; landing pages</li>
+          <li>Ongoing maintenance &amp; optimization</li>
         </ul>
       </div>
       <div class="svc">
@@ -508,9 +653,9 @@
         <h3>Brand Management</h3>
         <p>We build brands people recognize and trust — from logo to voice to reputation.</p>
         <ul>
-          <li>Logo & visual identity systems</li>
-          <li>Brand voice & style guides</li>
-          <li>Reputation management & PR</li>
+          <li>Logo &amp; visual identity systems</li>
+          <li>Brand voice &amp; style guides</li>
+          <li>Reputation management &amp; PR</li>
         </ul>
       </div>
       <div class="svc">
@@ -518,17 +663,67 @@
         <h3>Content Production</h3>
         <p>Professional photo and video that stops the scroll and tells your brand story with real impact.</p>
         <ul>
-          <li>Commercial photography & videography</li>
-          <li>Reels, TikToks & YouTube content</li>
-          <li>Professional editing & colour grading</li>
+          <li>Commercial photography &amp; videography</li>
+          <li>Reels, TikToks &amp; YouTube content</li>
+          <li>Professional editing &amp; colour grading</li>
         </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-ico">📊</div>
+        <h3>Paid Media &amp; Performance</h3>
+        <p>Data-driven ad campaigns across Google, Meta, and LinkedIn — built to maximize ROI and deliver real, measurable results.</p>
+        <ul>
+          <li>Google Ads &amp; Meta Ads management</li>
+          <li>LinkedIn B2B ad campaigns</li>
+          <li>Budget optimization &amp; weekly reporting</li>
+        </ul>
+      </div>
+      <div class="svc svc-cta">
+        <div class="svc-ico">✦</div>
+        <h3 style="margin-bottom:10px;">Not sure where to start?</h3>
+        <p style="margin-bottom:20px;">Book a free 30-minute strategy call. We'll map out exactly what your brand needs.</p>
+        <a href="#contact" class="btn btn-blue btn-sm">Get Free Audit →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 3. PORTFOLIO -->
-<section id="portfolio" class="sec sec-bg">
+<!-- 3. HOW WE WORK -->
+<section id="process" class="sec sec-bg">
+  <div class="wrap">
+    <div class="sh cx fu">
+      <span class="chip">Process</span>
+      <h2>How We Work</h2>
+      <p>A clear four-phase approach that turns strategy into measurable growth — every single time.</p>
+    </div>
+    <div class="process-grid fu">
+      <div class="process-line"></div>
+      <div class="process-step">
+        <div class="ps-num">🔍</div>
+        <h3>Phase 1 — Onboarding &amp; Audit</h3>
+        <p>We deep-dive into your current assets, competitors, and target audience to build a complete picture of where your brand stands today.</p>
+      </div>
+      <div class="process-step">
+        <div class="ps-num" style="border-color:var(--coral);">🎯</div>
+        <h3>Phase 2 — Strategy Development</h3>
+        <p>We set clear KPIs, define your content pillars, and build a custom roadmap aligned with your business goals and target market.</p>
+      </div>
+      <div class="process-step">
+        <div class="ps-num" style="border-color:#7C3AED;">🚀</div>
+        <h3>Phase 3 — Execution</h3>
+        <p>We launch campaigns, build your website, and produce content — keeping you informed and in control every step of the way.</p>
+      </div>
+      <div class="process-step">
+        <div class="ps-num" style="border-color:#059669;">📈</div>
+        <h3>Phase 4 — Optimization</h3>
+        <p>Monthly reporting, data-driven pivots, and continuous improvements keep your brand growing and your return on investment climbing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PORTFOLIO -->
+<section id="portfolio" class="sec">
   <div class="wrap">
     <div class="sh fu" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
       <div>
@@ -550,7 +745,7 @@
         <div class="pf-body">
           <span class="pf-cat" style="color:var(--blue)">Branding</span>
           <div class="pf-title">Brand Identity — Agro-Export Co.</div>
-          <div class="pf-desc">Full visual identity: logo, palette, typography & brand guidelines.</div>
+          <div class="pf-desc">Full visual identity: logo, palette, typography &amp; brand guidelines.</div>
         </div>
       </div>
       <div class="pf-card" data-cat="web">
@@ -566,7 +761,7 @@
         <div class="pf-body">
           <span class="pf-cat" style="color:#7C3AED">Social Media</span>
           <div class="pf-title">Social Growth — Music Label</div>
-          <div class="pf-desc">Grew Instagram & TikTok from 4K to 87K followers organically.</div>
+          <div class="pf-desc">Grew Instagram &amp; TikTok from 4K to 87K followers organically.</div>
         </div>
       </div>
       <div class="pf-card" data-cat="video">
@@ -595,7 +790,56 @@
   </div>
 </section>
 
-<!-- 4. TEAM -->
+<!-- 5. TESTIMONIALS -->
+<section id="testimonials" class="sec sec-bg">
+  <div class="wrap">
+    <div class="sh cx fu">
+      <span class="chip">Testimonials</span>
+      <h2>What Our Clients Say</h2>
+      <p>Real results. Real relationships. Brands across Ghana and West Africa growing with Ketsy Online.</p>
+    </div>
+    <div class="tm-grid fu">
+      <div class="tm">
+        <div class="tm-quote">"</div>
+        <div class="tm-stars">★★★★★</div>
+        <p class="tm-text">Ketsy Online completely transformed our Instagram presence. In three months our engagement tripled and we started getting direct enquiries from customers who found us online. The team genuinely understands the Ghanaian market.</p>
+        <div class="tm-author">
+          <div class="tm-av" style="background:linear-gradient(135deg,#2563EB,#7C3AED)">AO</div>
+          <div>
+            <div class="tm-name">Ama Owusu</div>
+            <div class="tm-co">Founder, The Fashion Vault · Accra</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm">
+        <div class="tm-quote">"</div>
+        <div class="tm-stars">★★★★★</div>
+        <p class="tm-text">We needed a website that actually converted visitors into buyers. Ketsy delivered exactly that — our Shopify store launched on time, looked incredible, and doubled our monthly revenue within the first 60 days.</p>
+        <div class="tm-author">
+          <div class="tm-av" style="background:linear-gradient(135deg,#FF5C2E,#f59e0b)">KA</div>
+          <div>
+            <div class="tm-name">Kwame Asante</div>
+            <div class="tm-co">CEO, Accra Eats · Ghana</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm">
+        <div class="tm-quote">"</div>
+        <div class="tm-stars">★★★★★</div>
+        <p class="tm-text">Our rebrand was a huge undertaking and Ketsy Online handled every detail professionally. The new visual identity has completely elevated how clients perceive us. We've received nothing but compliments since the launch.</p>
+        <div class="tm-author">
+          <div class="tm-av" style="background:linear-gradient(135deg,#059669,#2563EB)">PN</div>
+          <div>
+            <div class="tm-name">Patricia Nkrumah</div>
+            <div class="tm-co">Director, Palm &amp; Peak Hotels · Kumasi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. TEAM -->
 <section id="team" class="sec">
   <div class="wrap">
     <div class="sh cx fu">
@@ -607,7 +851,7 @@
       <div class="tc">
         <div class="tc-av" style="background:linear-gradient(135deg,var(--blue),#7C3AED)">K</div>
         <div class="tc-name">Ketsy — Founder</div>
-        <div class="tc-role">Strategy & Creative Director</div>
+        <div class="tc-role">Strategy &amp; Creative Director</div>
         <div class="tc-bio">Leads brand strategy, client partnerships, and creative direction. Deep knowledge of the Ghanaian market and a passion for brands that sell.</div>
         <div class="tc-tags">
           <span class="tc-tag">Brand Strategy</span>
@@ -618,7 +862,7 @@
       <div class="tc">
         <div class="tc-av" style="background:linear-gradient(135deg,var(--coral),#f59e0b)">Co</div>
         <div class="tc-name">Co-Founder</div>
-        <div class="tc-role">Technical & Operations Lead</div>
+        <div class="tc-role">Technical &amp; Operations Lead</div>
         <div class="tc-bio">Oversees web development, content production, and all technical delivery. Ensures every project is built to perform and scale.</div>
         <div class="tc-tags">
           <span class="tc-tag">Web Development</span>
@@ -630,8 +874,8 @@
   </div>
 </section>
 
-<!-- 5. PRICING -->
-<section id="pricing" class="sec sec-bg">
+<!-- 8. PRICING -->
+<section id="pricing" class="sec">
   <div class="wrap">
     <div class="sh cx fu">
       <span class="chip">Pricing</span>
@@ -643,7 +887,7 @@
         <div class="pr-type">Project-Based</div>
         <h3>Starter</h3>
         <div class="pr-desc">One-time deliverable — a website, brand identity, or campaign launch.</div>
-        <div class="pr-price">Custom <span>/ project</span></div>
+        <div class="pr-price">From GHS 2,500 <span>/ project</span></div>
         <ul>
           <li>Defined project scope</li>
           <li>3-round revision policy</li>
@@ -657,12 +901,12 @@
         <div class="pr-type">Retainer-Based</div>
         <h3>Growth</h3>
         <div class="pr-desc">A long-term partnership — we become your marketing team.</div>
-        <div class="pr-price">Monthly <span>retainer</span></div>
+        <div class="pr-price">From GHS 1,800 <span>/ month</span></div>
         <ul>
           <li>Social media (3 platforms)</li>
           <li>Monthly content production</li>
           <li>Website management</li>
-          <li>Monthly strategy & reporting call</li>
+          <li>Monthly strategy &amp; reporting call</li>
         </ul>
         <a href="#contact" class="btn btn-coral" style="width:100%;justify-content:center;">Start Retainer</a>
       </div>
@@ -670,7 +914,7 @@
         <div class="pr-type">Performance-Based</div>
         <h3>Scale</h3>
         <div class="pr-desc">For growth-stage brands — our fee is tied to your results.</div>
-        <div class="pr-price">Results <span>/ tied</span></div>
+        <div class="pr-price">Custom <span>/ results-tied</span></div>
         <ul>
           <li>KPI-aligned fee structure</li>
           <li>Full campaign management</li>
@@ -683,7 +927,7 @@
   </div>
 </section>
 
-<!-- 6. CONTACT -->
+<!-- 10. CONTACT -->
 <section id="contact" class="sec">
   <div class="wrap">
     <div class="ct-wrap">
@@ -692,15 +936,24 @@
         <h2>Let's Build Something Great</h2>
         <p>Book a free 30-minute strategy call. We'll reply within 24 hours.</p>
         <div style="margin-top:28px;">
-          <div class="ct-row"><div class="ct-ico">📍</div><div><p>Location</p><p>Accra, Ghana 🇬🇭</p></div></div>
-          <div class="ct-row"><div class="ct-ico">📧</div><div><p>Email</p><p>hello@ketsyonline.com</p></div></div>
-          <div class="ct-row"><div class="ct-ico">📱</div><div><p>Phone / WhatsApp</p><p>+233 — — — — — —</p></div></div>
+          <div class="ct-row">
+            <div class="ct-ico">📍</div>
+            <div><p>Location</p><p>Accra, Ghana 🇬🇭</p></div>
+          </div>
+          <a href="mailto:ketsyonline@gmail.com" class="ct-row" style="display:flex;color:inherit;">
+            <div class="ct-ico">📧</div>
+            <div><p>Email</p><p>ketsyonline@gmail.com</p></div>
+          </a>
+          <a href="https://wa.me/233201987432" target="_blank" rel="noopener" class="ct-row" style="display:flex;color:inherit;">
+            <div class="ct-ico">📱</div>
+            <div><p>WhatsApp / Phone</p><p>+233 20 198 7432</p></div>
+          </a>
         </div>
         <div class="soc-row">
-          <a href="#" class="soc">📷</a>
-          <a href="#" class="soc">💼</a>
-          <a href="#" class="soc">🐦</a>
-          <a href="#" class="soc">🎵</a>
+          <a href="https://www.instagram.com/ketsy.online?igsh=MXM4eDJyaDBzdmJtaw==" target="_blank" rel="noopener" class="soc" title="Instagram">📷</a>
+          <a href="https://linkedin.com/company/ketsyonline" target="_blank" rel="noopener" class="soc" title="LinkedIn">💼</a>
+          <a href="https://twitter.com/ketsyonline" target="_blank" rel="noopener" class="soc" title="Twitter / X">🐦</a>
+          <a href="https://www.tiktok.com/@ketsyonline?_r=1&_t=ZS-96T6KcAHoGK" target="_blank" rel="noopener" class="soc" title="TikTok">🎵</a>
         </div>
       </div>
       <div class="ct-form fu">
@@ -716,9 +969,10 @@
           <select>
             <option value="">Select a service...</option>
             <option>Social Media Management</option>
-            <option>Website Design & Management</option>
+            <option>Website Design &amp; Management</option>
             <option>Brand Management</option>
             <option>Content Production</option>
+            <option>Paid Media &amp; Performance</option>
             <option>Full-Service Retainer</option>
           </select>
         </div>
@@ -737,8 +991,24 @@
   <div class="wrap">
     <div class="ft-in">
       <div class="ft-brand">
-        <a href="#hero" class="logo">Ketsy <em>Online</em></a>
+        <a href="#hero" class="logo">
+          <svg viewBox="0 0 420 530" height="52" xmlns="http://www.w3.org/2000/svg" aria-label="Ketsy Online">
+            <polygon points="78,78 278,78 78,278" fill="#FF5C2E"/>
+            <polygon points="78,122 232,78 278,78 78,232" fill="#ffffff"/>
+            <text x="85" y="136" transform="rotate(-42,85,136)" font-family="'Arial Black','Arial',sans-serif" font-size="17" font-weight="900" fill="#0A0F1E" letter-spacing="2">ONLINE</text>
+            <rect x="78" y="78" width="88" height="430" fill="#2B2898"/>
+            <polygon points="166,250 388,78 388,162 166,338" fill="#2B2898"/>
+            <polygon points="166,316 388,508 308,508 166,400" fill="#2B2898"/>
+            <polygon points="320,78 388,78 388,230 354,230 354,148 320,148" fill="#2B2898"/>
+            <polygon points="294,118 388,78 388,172" fill="#2B2898"/>
+            <text x="68" y="516" font-family="'Arial Black','Arial',sans-serif" font-size="76" font-weight="900" font-style="italic" fill="#ffffff" letter-spacing="8">KETSY</text>
+          </svg>
+        </a>
         <p>Full-service digital marketing for brands across Ghana and West Africa.</p>
+        <div class="ft-contact">
+          <a href="mailto:ketsyonline@gmail.com">ketsyonline@gmail.com</a>
+          <a href="https://wa.me/233201987432">+233 20 198 7432</a>
+        </div>
       </div>
       <div class="ft-links">
         <div class="ft-col">
@@ -748,11 +1018,13 @@
             <li><a href="#services">Web Design</a></li>
             <li><a href="#services">Brand Management</a></li>
             <li><a href="#services">Content Production</a></li>
+            <li><a href="#services">Paid Media</a></li>
           </ul>
         </div>
         <div class="ft-col">
           <h4>Company</h4>
           <ul>
+            <li><a href="#process">How We Work</a></li>
             <li><a href="#portfolio">Our Work</a></li>
             <li><a href="#team">The Team</a></li>
             <li><a href="#pricing">Pricing</a></li>
@@ -762,13 +1034,24 @@
       </div>
     </div>
     <div class="ft-bot">
-      <p>© 2025 Ketsy Online. All rights reserved. Built with ❤️ in Ghana.</p>
-      <p><a href="#" style="color:rgba(255,255,255,0.28);font-size:0.78rem;margin-right:16px;">Privacy Policy</a><a href="#" style="color:rgba(255,255,255,0.28);font-size:0.78rem;">Terms</a></p>
+      <p>© 2026 Ketsy Online. All rights reserved. Built with ❤️ in Ghana.</p>
+      <p>
+        <a href="#" style="color:rgba(255,255,255,0.28);font-size:0.78rem;margin-right:16px;">Privacy Policy</a>
+        <a href="#" style="color:rgba(255,255,255,0.28);font-size:0.78rem;">Terms</a>
+      </p>
     </div>
   </div>
 </footer>
 
-<div id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<!-- WHATSAPP FLOAT BUTTON -->
+<a id="wa-float" href="https://wa.me/233201987432" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+</a>
+
+<div id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</div>
 
 <script>
   /* Rotating word */
@@ -783,7 +1066,7 @@
     }, 290);
   }, 2400);
 
-  /* Scroll fade */
+  /* Scroll fade-in */
   const io = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); }), {threshold:0.08});
   document.querySelectorAll('.fu').forEach(el => io.observe(el));
 
@@ -794,8 +1077,8 @@
   function filterPF(cat, btn) {
     document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('on'));
     btn.classList.add('on');
-    document.querySelectorAll('.pf-card').forEach(c => {
-      const show = cat==='all' || c.dataset.cat===cat;
+    document.querySelectorAll('#pfg .pf-card, #pfg .pf-add').forEach(c => {
+      const show = cat==='all' || c.dataset.cat===cat || c.classList.contains('pf-add');
       c.style.opacity = show ? '1' : '0.2';
       c.style.transform = show ? '' : 'scale(0.97)';
       c.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
@@ -803,13 +1086,25 @@
   }
 
   /* Nav */
-  function toggleMenu() { const m=document.getElementById('mm'); m.style.display=m.style.display==='none'?'block':'none'; }
-  function closeMenu() { document.getElementById('mm').style.display='none'; }
+  function toggleMenu() {
+    const m = document.getElementById('mm');
+    m.style.display = (m.style.display === 'block') ? 'none' : 'block';
+  }
+  function closeMenu() { document.getElementById('mm').style.display = 'none'; }
 
   /* Form */
   function handleSend(btn) {
-    btn.textContent='✓ Sent! We\'ll be in touch within 24 hours.';
-    btn.style.background='#10B981'; btn.disabled=true;
+    btn.textContent = '✓ Sent! We\'ll be in touch within 24 hours.';
+    btn.style.background = '#10B981';
+    btn.disabled = true;
+  }
+
+  /* FAQ accordion */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   }
 </script>
 </body>
