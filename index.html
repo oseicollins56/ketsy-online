@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Ketsy Online — Ghana's full-service digital marketing agency. Social media management, web design, brand management, content production and paid media for brands across West Africa." />
+  <meta name="description" content="Ketsy Online, Ghana's full-service digital marketing agency. Social media management, web design, brand management, content production and paid media for brands across West Africa." />
   <title>Ketsy Online | Digital Marketing Agency</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,10 +78,10 @@
     }
     .nav-in {
       max-width: 1140px; margin: 0 auto; padding: 0 28px;
-      display: flex; align-items: center; justify-content: space-between; height: 82px;
+      display: flex; align-items: center; justify-content: space-between; height: 96px;
     }
     .logo { display: flex; align-items: center; }
-    .logo img { height: 72px; width: auto; display: block; }
+    .logo img { height: 88px; width: auto; display: block; }
     .logo-text { font-size: 1.35rem; font-weight: 900; color: var(--dark); }
     .logo-text em { color: var(--blue); font-style: normal; }
     .nav-links { display: flex; gap: 26px; list-style: none; }
@@ -90,7 +90,7 @@
     .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .ham span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; }
     #mm {
-      display: none; position: fixed; top: 82px; left: 0; right: 0;
+      display: none; position: fixed; top: 96px; left: 0; right: 0;
       background: var(--white); border-bottom: 1px solid var(--border);
       padding: 24px 28px; z-index: 998;
     }
@@ -100,7 +100,7 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh; padding-top: 82px;
+      min-height: 100vh; padding-top: 96px;
       display: flex; align-items: center;
       background: var(--white); position: relative; overflow: hidden;
     }
@@ -191,15 +191,15 @@
     @media (max-width: 600px) { .stat-box { padding: 24px 20px; } }
 
     /* ── CLIENT LOGOS ── */
-    .logos-strip { padding: 52px 0; border-bottom: 1px solid var(--border); }
-    .logos-lbl { text-align: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--grey); margin-bottom: 30px; }
-    .logos-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 18px; }
+    .logos-strip { padding: 56px 0; background: var(--blue); }
+    .logos-lbl { text-align: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 30px; }
+    .logos-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 16px; }
     .logo-item {
-      padding: 10px 22px; border: 1px solid var(--border); border-radius: 10px;
-      font-size: 0.85rem; font-weight: 800; color: var(--grey); letter-spacing: 0.3px;
-      background: var(--white); transition: var(--t); opacity: 0.6;
+      padding: 10px 22px; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 10px;
+      font-size: 0.85rem; font-weight: 800; color: rgba(255,255,255,0.85); letter-spacing: 0.3px;
+      background: rgba(255,255,255,0.08); transition: var(--t);
     }
-    .logo-item:hover { opacity: 1; border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+    .logo-item:hover { background: var(--coral); border-color: var(--coral); color: var(--white); transform: translateY(-2px); }
 
     /* ── SERVICES ── */
     .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
@@ -440,22 +440,21 @@
     .fg textarea { resize: vertical; min-height: 100px; }
 
     /* ── FOOTER ── */
-    footer { background: var(--dark); padding: 52px 0 28px; }
+    footer { background: var(--white); padding: 52px 0 28px; border-top: 2px solid var(--blue-lt); }
     .ft-in { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 36px; margin-bottom: 44px; }
-    .ft-brand .logo { color: var(--white); display: block; margin-bottom: 10px; }
-    .ft-brand .logo em { color: var(--blue); }
-    .ft-brand p { font-size: 0.84rem; color: rgba(255,255,255,0.4); max-width: 220px; line-height: 1.65; }
+    .ft-brand .logo { display: block; margin-bottom: 10px; }
+    .ft-brand p { font-size: 0.84rem; color: var(--grey); max-width: 220px; line-height: 1.65; }
     .ft-contact { margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
-    .ft-contact a { font-size: 0.8rem; color: rgba(255,255,255,0.4); transition: var(--t); }
+    .ft-contact a { font-size: 0.8rem; color: var(--grey); transition: var(--t); }
     .ft-contact a:hover { color: var(--blue); }
     .ft-links { display: flex; gap: 52px; flex-wrap: wrap; }
-    .ft-col h4 { font-size: 0.82rem; font-weight: 700; color: var(--white); margin-bottom: 14px; letter-spacing: 0.3px; }
+    .ft-col h4 { font-size: 0.82rem; font-weight: 700; color: var(--dark); margin-bottom: 14px; letter-spacing: 0.3px; }
     .ft-col ul { list-style: none; }
     .ft-col li { margin-bottom: 9px; }
-    .ft-col a { font-size: 0.83rem; color: rgba(255,255,255,0.4); transition: var(--t); }
+    .ft-col a { font-size: 0.83rem; color: var(--grey); transition: var(--t); }
     .ft-col a:hover { color: var(--blue); }
-    .ft-bot { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-    .ft-bot p { font-size: 0.8rem; color: rgba(255,255,255,0.28); }
+    .ft-bot { border-top: 1px solid var(--border); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .ft-bot p { font-size: 0.8rem; color: var(--grey); }
 
     /* ── WHATSAPP FLOAT ── */
     #wa-float {
@@ -496,11 +495,10 @@
 <nav>
   <div class="nav-in">
     <a href="#hero" class="logo">
-      <img src="ketsy-logo.png" alt="Ketsy Online" height="72" style="height:72px;width:auto;">
+      <img src="ketsy-logo.png" alt="Ketsy Online" height="88" style="height:88px;width:auto;">
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -516,7 +514,6 @@
 <div id="mm">
   <ul>
     <li><a href="#services" onclick="closeMenu()">Services</a></li>
-    <li><a href="#process" onclick="closeMenu()">Process</a></li>
     <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
     <li><a href="#team" onclick="closeMenu()">Team</a></li>
     <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
@@ -617,7 +614,7 @@
       <div class="svc">
         <div class="svc-ico">🌐</div>
         <h3>Website Design &amp; Management</h3>
-        <p>Fast, conversion-focused websites built mobile-first — with ongoing SEO, maintenance, and security.</p>
+        <p>Fast, conversion-focused websites built mobile-first with ongoing SEO, maintenance, and security.</p>
         <ul>
           <li>WordPress, Shopify &amp; custom builds</li>
           <li>UI/UX design &amp; landing pages</li>
@@ -627,7 +624,7 @@
       <div class="svc">
         <div class="svc-ico">🖌️</div>
         <h3>Brand Management</h3>
-        <p>We build brands people recognize and trust — from logo to voice to reputation.</p>
+        <p>We build brands people recognize and trust, from logo to voice to reputation.</p>
         <ul>
           <li>Logo &amp; visual identity systems</li>
           <li>Brand voice &amp; style guides</li>
@@ -647,7 +644,7 @@
       <div class="svc">
         <div class="svc-ico">📊</div>
         <h3>Paid Media &amp; Performance</h3>
-        <p>Data-driven ad campaigns across Google, Meta, and LinkedIn — built to maximize ROI and deliver real, measurable results.</p>
+        <p>Data-driven ad campaigns across Google, Meta, and LinkedIn, built to maximize ROI and deliver real, measurable results.</p>
         <ul>
           <li>Google Ads &amp; Meta Ads management</li>
           <li>LinkedIn B2B ad campaigns</li>
@@ -659,40 +656,6 @@
         <h3 style="margin-bottom:10px;">Not sure where to start?</h3>
         <p style="margin-bottom:20px;">Book a free 30-minute strategy call. We'll map out exactly what your brand needs.</p>
         <a href="#contact" class="btn btn-blue btn-sm">Get Free Audit →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. HOW WE WORK -->
-<section id="process" class="sec sec-bg">
-  <div class="wrap">
-    <div class="sh cx fu">
-      <span class="chip">Process</span>
-      <h2>How We Work</h2>
-      <p>A clear four-phase approach that turns strategy into measurable growth — every single time.</p>
-    </div>
-    <div class="process-grid fu">
-      <div class="process-line"></div>
-      <div class="process-step">
-        <div class="ps-num">🔍</div>
-        <h3>Phase 1 — Onboarding &amp; Audit</h3>
-        <p>We deep-dive into your current assets, competitors, and target audience to build a complete picture of where your brand stands today.</p>
-      </div>
-      <div class="process-step">
-        <div class="ps-num" style="border-color:var(--coral);">🎯</div>
-        <h3>Phase 2 — Strategy Development</h3>
-        <p>We set clear KPIs, define your content pillars, and build a custom roadmap aligned with your business goals and target market.</p>
-      </div>
-      <div class="process-step">
-        <div class="ps-num" style="border-color:#7C3AED;">🚀</div>
-        <h3>Phase 3 — Execution</h3>
-        <p>We launch campaigns, build your website, and produce content — keeping you informed and in control every step of the way.</p>
-      </div>
-      <div class="process-step">
-        <div class="ps-num" style="border-color:#059669;">📈</div>
-        <h3>Phase 4 — Optimization</h3>
-        <p>Monthly reporting, data-driven pivots, and continuous improvements keep your brand growing and your return on investment climbing.</p>
       </div>
     </div>
   </div>
@@ -741,7 +704,7 @@
         <div class="pf-body">
           <span class="pf-cat" style="color:var(--coral)">Website</span>
           <div class="pf-title">Luxx Motors</div>
-          <div class="pf-desc">Luxury automotive brand — web design &amp; digital presence.</div>
+          <div class="pf-desc">Luxury automotive brand: web design &amp; digital presence.</div>
         </div>
       </a>
 
@@ -781,7 +744,7 @@
         <div class="pf-body">
           <span class="pf-cat" style="color:#16A34A">Branding</span>
           <div class="pf-title">Nobi Agric</div>
-          <div class="pf-desc">Agricultural brand — identity, web &amp; digital marketing.</div>
+          <div class="pf-desc">Agricultural brand: identity, web &amp; digital marketing.</div>
         </div>
       </a>
 
@@ -837,7 +800,7 @@
     <div class="team-grid fu">
       <div class="tc">
         <div class="tc-av" style="background:linear-gradient(135deg,#2B2898,#FF5C2E)">K</div>
-        <div class="tc-name">Ketsy — Founder</div>
+        <div class="tc-name">Ketsy, Founder</div>
         <div class="tc-role">Strategy &amp; Creative Director</div>
         <div class="tc-bio">Leads brand strategy, client partnerships, and creative direction. Deep knowledge of the Ghanaian market and a passion for brands that sell.</div>
         <div class="tc-tags">
@@ -873,7 +836,7 @@
       <div class="pr">
         <div class="pr-type">Project-Based</div>
         <h3>Starter</h3>
-        <div class="pr-desc">One-time deliverable — a website, brand identity, or campaign launch.</div>
+        <div class="pr-desc">One-time deliverable: a website, brand identity, or campaign launch.</div>
         <div class="pr-price">From GHS 2,500 <span>/ project</span></div>
         <ul>
           <li>Defined project scope</li>
@@ -887,7 +850,7 @@
         <div class="pr-badge">Most Popular</div>
         <div class="pr-type">Retainer-Based</div>
         <h3>Growth</h3>
-        <div class="pr-desc">A long-term partnership — we become your marketing team.</div>
+        <div class="pr-desc">A long-term partnership. We become your marketing team.</div>
         <div class="pr-price">From GHS 1,800 <span>/ month</span></div>
         <ul>
           <li>Social media (3 platforms)</li>
@@ -900,7 +863,7 @@
       <div class="pr">
         <div class="pr-type">Performance-Based</div>
         <h3>Scale</h3>
-        <div class="pr-desc">For growth-stage brands — our fee is tied to your results.</div>
+        <div class="pr-desc">For growth-stage brands. Our fee is tied to your results.</div>
         <div class="pr-price">Custom <span>/ results-tied</span></div>
         <ul>
           <li>KPI-aligned fee structure</li>
@@ -979,7 +942,7 @@
     <div class="ft-in">
       <div class="ft-brand">
         <a href="#hero" class="logo">
-          <img src="ketsy-logo.png" alt="Ketsy Online" height="72" style="height:72px;width:auto;">
+          <img src="ketsy-logo.png" alt="Ketsy Online" height="88" style="height:88px;width:auto;">
         </a>
         <p>Full-service digital marketing for brands across Ghana and West Africa.</p>
         <div class="ft-contact">
@@ -1013,8 +976,8 @@
     <div class="ft-bot">
       <p>© 2026 Ketsy Online. All rights reserved. Built with ❤️ in Ghana.</p>
       <p>
-        <a href="#" style="color:rgba(255,255,255,0.28);font-size:0.78rem;margin-right:16px;">Privacy Policy</a>
-        <a href="#" style="color:rgba(255,255,255,0.28);font-size:0.78rem;">Terms</a>
+        <a href="#" style="color:var(--grey);font-size:0.78rem;margin-right:16px;">Privacy Policy</a>
+        <a href="#" style="color:var(--grey);font-size:0.78rem;">Terms</a>
       </p>
     </div>
   </div>
