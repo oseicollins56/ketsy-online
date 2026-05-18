@@ -26,6 +26,8 @@
       --f:       'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
     }
     html { scroll-behavior: smooth; }
+    /* Prevent browser from restoring old scroll on reload */
+    html, body { scroll-behavior: auto; }
     body { font-family: var(--f); color: var(--dark); background: var(--white); -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
     .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
@@ -994,6 +996,17 @@
 <div id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</div>
 
 <script>
+  /* ── Always open from the very top ── */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('load', () => {
+    // Always start at the top unless user clicked a specific anchor link
+    if (!window.location.hash || window.location.hash === '#hero') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+    // Re-enable smooth scroll after load so nav links still animate
+    document.documentElement.style.scrollBehavior = 'smooth';
+  });
+
   /* Rotating word */
   const words = ['Convert.','Grow.','Lead.','Stand Out.'];
   let wi = 0; const rw = document.getElementById('rw');
