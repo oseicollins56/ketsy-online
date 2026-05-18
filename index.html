@@ -8,20 +8,20 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --blue:    #2563EB;
-      --blue-dk: #1A4FC4;
-      --blue-lt: #EEF3FF;
-      --coral:   #FF5C2E;
+      --blue:    #2B2898;   /* logo indigo */
+      --blue-dk: #1E1B72;   /* deeper indigo for hover */
+      --blue-lt: #ECECF8;   /* very light indigo tint */
+      --coral:   #FF5C2E;   /* logo orange */
       --dark:    #0A0F1E;
       --grey:    #6B7280;
       --border:  #E5E7EB;
-      --bg:      #F9FAFB;
+      --bg:      #F8F8FC;   /* barely-there indigo on sections */
       --white:   #FFFFFF;
       --r:       14px;
       --rl:      22px;
       --sh:      0 4px 24px rgba(10,15,30,0.08);
       --sh-lg:   0 12px 48px rgba(10,15,30,0.14);
-      --sh-b:    0 8px 32px rgba(37,99,235,0.25);
+      --sh-b:    0 8px 32px rgba(43,40,152,0.28);
       --t:       all 0.28s cubic-bezier(.4,0,.2,1);
       --f:       'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
     }
@@ -72,15 +72,16 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      background: rgba(255,255,255,0.96); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(14px);
+      border-bottom: 2px solid var(--blue-lt);
+      box-shadow: 0 2px 16px rgba(43,40,152,0.07);
     }
     .nav-in {
       max-width: 1140px; margin: 0 auto; padding: 0 28px;
-      display: flex; align-items: center; justify-content: space-between; height: 66px;
+      display: flex; align-items: center; justify-content: space-between; height: 82px;
     }
     .logo { display: flex; align-items: center; }
-    .logo img { height: 48px; width: auto; display: block; }
+    .logo img { height: 72px; width: auto; display: block; }
     .logo-text { font-size: 1.35rem; font-weight: 900; color: var(--dark); }
     .logo-text em { color: var(--blue); font-style: normal; }
     .nav-links { display: flex; gap: 26px; list-style: none; }
@@ -89,7 +90,7 @@
     .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .ham span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; }
     #mm {
-      display: none; position: fixed; top: 66px; left: 0; right: 0;
+      display: none; position: fixed; top: 82px; left: 0; right: 0;
       background: var(--white); border-bottom: 1px solid var(--border);
       padding: 24px 28px; z-index: 998;
     }
@@ -99,13 +100,13 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh; padding-top: 66px;
+      min-height: 100vh; padding-top: 82px;
       display: flex; align-items: center;
       background: var(--white); position: relative; overflow: hidden;
     }
     .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; pointer-events: none; }
-    .b1 { width: 550px; height: 550px; background: #DBEAFE; top: -120px; right: -80px; }
-    .b2 { width: 350px; height: 350px; background: #FDE8E0; bottom: -60px; left: -60px; }
+    .b1 { width: 550px; height: 550px; background: #D8D7F0; top: -120px; right: -80px; }
+    .b2 { width: 350px; height: 350px; background: #FFE8DF; bottom: -60px; left: -60px; }
 
     .hero-grid {
       display: grid; grid-template-columns: 1.05fr 0.95fr;
@@ -146,11 +147,11 @@
     }
     .hcard::before {
       content:''; position: absolute; top:0; left:0; right:0; height: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--coral));
+      background: linear-gradient(90deg, #2B2898, #FF5C2E);
     }
     .hc-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
     .hc-big { font-size: 2.2rem; font-weight: 900; color: var(--white); }
-    .hc-tag { display: inline-block; background: rgba(37,99,235,0.25); color: #93C5FD; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-left: 10px; vertical-align: middle; }
+    .hc-tag { display: inline-block; background: rgba(37,99,235,0.25); color: #B8B6F0; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-left: 10px; vertical-align: middle; }
     .hc-bars { display: flex; flex-direction: column; gap: 11px; margin: 20px 0; }
     .hc-bar-row { display: flex; align-items: center; gap: 10px; }
     .hc-bar-lbl { font-size: 0.76rem; color: rgba(255,255,255,0.5); width: 62px; flex-shrink: 0; }
@@ -212,7 +213,7 @@
     }
     .svc::after {
       content:''; position:absolute; top:0; left:0; right:0; height:3px;
-      background: linear-gradient(90deg, var(--blue), #818CF8);
+      background: linear-gradient(90deg, #2B2898, #FF5C2E);
       transform: scaleX(0); transform-origin: left; transition: var(--t);
     }
     .svc:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: transparent; }
@@ -233,7 +234,7 @@
     @media (max-width: 480px) { .process-grid { grid-template-columns: 1fr; } }
     .process-line {
       position: absolute; top: 35px; left: calc(12.5% + 4px); right: calc(12.5% + 4px);
-      height: 2px; background: linear-gradient(90deg,var(--blue),var(--coral)); z-index: 0;
+      height: 2px; background: linear-gradient(90deg, #2B2898, #FF5C2E); z-index: 0;
     }
     @media (max-width: 860px) { .process-line { display: none; } }
     .process-step { text-align: center; padding: 0 12px; position: relative; z-index: 1; }
@@ -365,7 +366,7 @@
       text-transform: uppercase; padding: 5px 14px; border-radius: 20px;
     }
     .pr-type { font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
-    .pr-feat .pr-type { color: #60A5FA; }
+    .pr-feat .pr-type { color: #B8B6F0; }
     .pr h3 { color: var(--dark); margin-bottom: 6px; }
     .pr-feat h3 { color: var(--white); }
     .pr-desc { font-size: 0.86rem; color: var(--grey); margin-bottom: 22px; }
@@ -381,7 +382,7 @@
     }
     .pr-feat li { border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); }
     .pr li::before { content:'✓'; color: var(--blue); font-weight: 900; flex-shrink: 0; }
-    .pr-feat li::before { color: #60A5FA; }
+    .pr-feat li::before { color: #B8B6F0; }
 
     /* ── FAQ ── */
     .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
@@ -495,7 +496,7 @@
 <nav>
   <div class="nav-in">
     <a href="#hero" class="logo">
-      <img src="ketsy-logo.png" alt="Ketsy Online" height="52" style="height:52px;width:auto;">
+      <img src="ketsy-logo.png" alt="Ketsy Online" height="72" style="height:72px;width:auto;">
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -541,9 +542,9 @@
         </div>
         <div class="trust">
           <div class="avatars">
-            <div class="av" style="background:linear-gradient(135deg,var(--blue),#7C3AED)">K</div>
+            <div class="av" style="background:linear-gradient(135deg,#2B2898,#FF5C2E)">K</div>
             <div class="av" style="background:linear-gradient(135deg,var(--coral),#f59e0b)">A</div>
-            <div class="av" style="background:linear-gradient(135deg,#7C3AED,var(--blue))">M</div>
+            <div class="av" style="background:linear-gradient(135deg,#FF5C2E,#2B2898)">M</div>
           </div>
           <div class="trust-txt">
             <strong>8+ brands trust Ketsy Online</strong>
@@ -561,9 +562,9 @@
             </div>
           </div>
           <div class="hc-bars">
-            <div class="hc-bar-row"><div class="hc-bar-lbl">Instagram</div><div class="hc-track"><div class="hc-fill" style="width:88%;background:linear-gradient(90deg,#2563EB,#818CF8);"></div></div></div>
+            <div class="hc-bar-row"><div class="hc-bar-lbl">Instagram</div><div class="hc-track"><div class="hc-fill" style="width:88%;background:linear-gradient(90deg,#2B2898,#FF5C2E);"></div></div></div>
             <div class="hc-bar-row"><div class="hc-bar-lbl">TikTok</div><div class="hc-track"><div class="hc-fill" style="width:74%;background:linear-gradient(90deg,#FF5C2E,#f59e0b);"></div></div></div>
-            <div class="hc-bar-row"><div class="hc-bar-lbl">LinkedIn</div><div class="hc-track"><div class="hc-fill" style="width:45%;background:linear-gradient(90deg,#7C3AED,#2563EB);"></div></div></div>
+            <div class="hc-bar-row"><div class="hc-bar-lbl">LinkedIn</div><div class="hc-track"><div class="hc-fill" style="width:45%;background:linear-gradient(90deg,#2B2898,#1E1B72);"></div></div></div>
           </div>
           <div class="hc-pills">
             <span class="hc-pill">📱 Social Media</span>
@@ -746,7 +747,7 @@
 
       <!-- AMC Polska -->
       <a class="pf-card" data-cat="brand" href="https://amcpolska.com" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
-        <div class="pf-thumb" style="background:linear-gradient(135deg,#EEF3FF,#DBEAFE);">🖌️<div class="pf-over"><span>Visit Site →</span></div></div>
+        <div class="pf-thumb" style="background:linear-gradient(135deg,#ECECF8,#DBEAFE);">🖌️<div class="pf-over"><span>Visit Site →</span></div></div>
         <div class="pf-body">
           <span class="pf-cat" style="color:var(--blue)">Branding</span>
           <div class="pf-title">AMC Polska</div>
@@ -835,7 +836,7 @@
     </div>
     <div class="team-grid fu">
       <div class="tc">
-        <div class="tc-av" style="background:linear-gradient(135deg,var(--blue),#7C3AED)">K</div>
+        <div class="tc-av" style="background:linear-gradient(135deg,#2B2898,#FF5C2E)">K</div>
         <div class="tc-name">Ketsy — Founder</div>
         <div class="tc-role">Strategy &amp; Creative Director</div>
         <div class="tc-bio">Leads brand strategy, client partnerships, and creative direction. Deep knowledge of the Ghanaian market and a passion for brands that sell.</div>
@@ -978,7 +979,7 @@
     <div class="ft-in">
       <div class="ft-brand">
         <a href="#hero" class="logo">
-          <img src="ketsy-logo.png" alt="Ketsy Online" height="52" style="height:52px;width:auto;">
+          <img src="ketsy-logo.png" alt="Ketsy Online" height="72" style="height:72px;width:auto;">
         </a>
         <p>Full-service digital marketing for brands across Ghana and West Africa.</p>
         <div class="ft-contact">
