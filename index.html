@@ -68,8 +68,134 @@
     .sh.cx p { margin: 10px auto 0; }
 
     /* FADE ANIMATIONS */
-    .fu { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fu { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
     .fu.on { opacity: 1; transform: none; }
+    .fu.delay-1 { transition-delay: 0.1s; }
+    .fu.delay-2 { transition-delay: 0.2s; }
+    .fu.delay-3 { transition-delay: 0.3s; }
+    .fu.delay-4 { transition-delay: 0.4s; }
+    .fu.delay-5 { transition-delay: 0.5s; }
+
+    /* SCROLL PROGRESS */
+    #scroll-bar {
+      position: fixed; top: 0; left: 0; height: 3px; z-index: 10000;
+      background: linear-gradient(90deg, var(--blue), var(--coral));
+      width: 0%; transition: width 0.1s linear;
+    }
+
+    /* CURSOR GLOW */
+    #cursor-glow {
+      position: fixed; pointer-events: none; z-index: 9999;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(43,40,152,0.06) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: left 0.15s ease, top 0.15s ease;
+    }
+
+    /* PARTICLE CANVAS */
+    #particle-canvas {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    }
+
+    /* GRADIENT TEXT SHIMMER */
+    .shimmer-text {
+      background: linear-gradient(90deg, var(--dark) 0%, var(--blue) 30%, var(--coral) 50%, var(--blue) 70%, var(--dark) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textShimmer 4s linear infinite;
+    }
+    @keyframes textShimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* MARQUEE LOGOS */
+    .logos-track-wrap { overflow: hidden; position: relative; }
+    .logos-track-wrap::before, .logos-track-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none;
+    }
+    .logos-track-wrap::before { left: 0; background: linear-gradient(to right, var(--blue), transparent); }
+    .logos-track-wrap::after { right: 0; background: linear-gradient(to left, var(--blue), transparent); }
+    .logos-track {
+      display: flex; gap: 16px; width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+    .logos-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* 3D TILT CARD */
+    .tilt-card { transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease; will-change: transform; }
+
+    /* ANIMATED BARS */
+    .hc-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.4s cubic-bezier(.22,1,.36,1); }
+    .bars-animated .hc-fill { /* widths set by JS */ }
+
+    /* STAT COUNTER */
+    .sn[data-target] { display: block; }
+
+    /* HERO BLOB ANIMATION */
+    .b1 { animation: blobMove1 8s ease-in-out infinite; }
+    .b2 { animation: blobMove2 10s ease-in-out infinite; }
+    @keyframes blobMove1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-30px,20px) scale(1.05)} 66%{transform:translate(20px,-15px) scale(0.97)} }
+    @keyframes blobMove2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(25px,-30px) scale(1.08)} }
+
+    /* RIPPLE BUTTON */
+    .btn { position: relative; overflow: hidden; }
+    .ripple-ring {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transform: scale(0); animation: ripple 0.55s linear;
+      pointer-events: none;
+    }
+    @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+    /* NAV SHRINK ON SCROLL */
+    nav.scrolled { box-shadow: 0 4px 30px rgba(43,40,152,0.12); }
+    nav.scrolled .nav-in { height: 72px; }
+    nav.scrolled .logo img { height: 64px; }
+    nav { transition: all 0.35s ease; }
+    .nav-in { transition: height 0.35s ease; }
+    .logo img { transition: height 0.35s ease; }
+
+    /* FLOATING ICONS SPIN */
+    .fc-ico { transition: transform 0.4s cubic-bezier(.34,1.56,.64,1); }
+    .float-card:hover .fc-ico { transform: rotate(15deg) scale(1.15); }
+
+    /* SERVICE CARD GLOW */
+    .svc { transition: var(--t), box-shadow 0.4s ease; }
+    .svc:hover { box-shadow: 0 20px 60px rgba(43,40,152,0.15), 0 0 0 1px rgba(43,40,152,0.08); }
+
+    /* SECTION DIVIDER WAVE */
+    .wave-divider { overflow: hidden; line-height: 0; }
+    .wave-divider svg { display: block; }
+
+    /* PRICING CARD GLOW */
+    .pr-feat { box-shadow: 0 20px 60px rgba(10,15,30,0.28), 0 0 40px rgba(43,40,152,0.2); }
+    .pr-feat:hover { box-shadow: 0 28px 80px rgba(10,15,30,0.38), 0 0 60px rgba(43,40,152,0.35) !important; transform: scale(1.06) !important; }
+
+    /* CONTACT ROW SLIDE */
+    .ct-row { transition: var(--t), box-shadow 0.3s ease; }
+    .ct-row:hover { box-shadow: var(--sh); }
+
+    /* BACK TO TOP PULSE */
+    #btt.on { animation: bttPulse 2s ease-in-out infinite; }
+    @keyframes bttPulse { 0%,100%{box-shadow:var(--sh-b)} 50%{box-shadow:0 0 0 8px rgba(43,40,152,0.12),var(--sh-b)} }
+
+    /* EYEBROW BADGE GLOW */
+    .eyebrow { box-shadow: 0 0 0 0 rgba(255,92,46,0.4); animation: eyeGlow 2.5s ease-in-out infinite; }
+    @keyframes eyeGlow { 0%,100%{box-shadow:0 0 0 0 rgba(255,92,46,0)} 50%{box-shadow:0 0 0 6px rgba(255,92,46,0.15)} }
+
+    /* HERO ENTRY ANIMATIONS */
+    .hero-entry-1 { animation: heroSlide 0.9s cubic-bezier(.22,1,.36,1) 0.1s both; }
+    .hero-entry-2 { animation: heroSlide 0.9s cubic-bezier(.22,1,.36,1) 0.25s both; }
+    .hero-entry-3 { animation: heroSlide 0.9s cubic-bezier(.22,1,.36,1) 0.4s both; }
+    .hero-entry-4 { animation: heroFade 1s ease 0.55s both; }
+    .hero-card-entry { animation: heroScale 1s cubic-bezier(.22,1,.36,1) 0.35s both; }
+    @keyframes heroSlide { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
+    @keyframes heroFade  { from{opacity:0} to{opacity:1} }
+    @keyframes heroScale { from{opacity:0;transform:scale(0.92) translateY(20px)} to{opacity:1;transform:none} }
 
     /* ── NAV ── */
     nav {
@@ -493,6 +619,9 @@
 </head>
 <body>
 
+<div id="scroll-bar"></div>
+<div id="cursor-glow"></div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-in">
@@ -527,19 +656,20 @@
 
 <!-- 1. HERO -->
 <section id="hero">
+  <canvas id="particle-canvas"></canvas>
   <div class="blob b1"></div>
   <div class="blob b2"></div>
   <div class="wrap">
     <div class="hero-grid">
-      <div class="fu">
-        <div class="eyebrow"><div class="dot"></div>Ghana's Digital Marketing Agency</div>
-        <h1 class="hero-h">We Build Brands<br>That <span class="rw" id="rw">Convert.</span></h1>
-        <p class="hero-sub">Full-service digital marketing for brands ready to grow. Bold strategy, sharp creative, measurable results.</p>
-        <div class="hero-btns">
+      <div>
+        <div class="eyebrow hero-entry-1"><div class="dot"></div>Ghana's Digital Marketing Agency</div>
+        <h1 class="hero-h hero-entry-2">We Build Brands<br>That <span class="rw" id="rw">Convert.</span></h1>
+        <p class="hero-sub hero-entry-3">Full-service digital marketing for brands ready to grow. Bold strategy, sharp creative, measurable results.</p>
+        <div class="hero-btns hero-entry-3">
           <a href="#contact" class="btn btn-coral">Book a Free Call →</a>
           <a href="#portfolio" class="btn btn-out">See Our Work</a>
         </div>
-        <div class="trust">
+        <div class="trust hero-entry-4">
           <div class="avatars">
             <div class="av" style="background:linear-gradient(135deg,#2B2898,#FF5C2E)">K</div>
             <div class="av" style="background:linear-gradient(135deg,var(--coral),#f59e0b)">A</div>
@@ -551,7 +681,7 @@
           </div>
         </div>
       </div>
-      <div style="position:relative;" class="fu">
+      <div style="position:relative;" class="hero-card-entry">
         <div class="hcard">
           <div class="hc-lbl">Campaign Performance · Live</div>
           <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;">
@@ -588,10 +718,10 @@
 
 <!-- STATS STRIP -->
 <div class="stats-row">
-  <div class="stat-box"><div class="sn">20<sup>+</sup></div><div class="sl">Campaigns Delivered</div></div>
-  <div class="stat-box"><div class="sn">5<sup>+</sup></div><div class="sl">Years Experience</div></div>
-  <div class="stat-box"><div class="sn">8<sup>+</sup></div><div class="sl">Active Brands</div></div>
-  <div class="stat-box"><div class="sn">98<sup>%</sup></div><div class="sl">Client Retention</div></div>
+  <div class="stat-box fu"><div class="sn" data-target="20" data-suffix="+">0+</div><div class="sl">Campaigns Delivered</div></div>
+  <div class="stat-box fu delay-1"><div class="sn" data-target="5" data-suffix="+">0+</div><div class="sl">Years Experience</div></div>
+  <div class="stat-box fu delay-2"><div class="sn" data-target="8" data-suffix="+">0+</div><div class="sl">Active Brands</div></div>
+  <div class="stat-box fu delay-3"><div class="sn" data-target="98" data-suffix="%">0%</div><div class="sl">Client Retention</div></div>
 </div>
 
 <!-- 2. SERVICES -->
@@ -602,8 +732,8 @@
       <h2>What We Do</h2>
       <p>Five core services. One integrated team. Focused entirely on growing your brand.</p>
     </div>
-    <div class="svc-grid fu">
-      <div class="svc">
+    <div class="svc-grid">
+      <div class="svc tilt-card fu delay-1">
         <div class="svc-ico">📱</div>
         <h3>Social Media Management</h3>
         <p>Platform-specific strategies that build real audiences and drive engagement on Instagram, TikTok, and LinkedIn.</p>
@@ -613,7 +743,7 @@
           <li>Growth &amp; analytics reporting</li>
         </ul>
       </div>
-      <div class="svc">
+      <div class="svc tilt-card fu delay-2">
         <div class="svc-ico">🌐</div>
         <h3>Website Design &amp; Management</h3>
         <p>Fast, conversion-focused websites built mobile-first with ongoing SEO, maintenance, and security.</p>
@@ -623,7 +753,7 @@
           <li>Ongoing maintenance &amp; optimization</li>
         </ul>
       </div>
-      <div class="svc">
+      <div class="svc tilt-card fu delay-3">
         <div class="svc-ico">🖌️</div>
         <h3>Brand Management</h3>
         <p>We build brands people recognize and trust, from logo to voice to reputation.</p>
@@ -633,7 +763,7 @@
           <li>Reputation management &amp; PR</li>
         </ul>
       </div>
-      <div class="svc">
+      <div class="svc tilt-card fu delay-1">
         <div class="svc-ico">🎬</div>
         <h3>Content Production</h3>
         <p>Professional photo and video that stops the scroll and tells your brand story with real impact.</p>
@@ -643,7 +773,7 @@
           <li>Professional editing &amp; colour grading</li>
         </ul>
       </div>
-      <div class="svc">
+      <div class="svc tilt-card fu delay-2">
         <div class="svc-ico">📊</div>
         <h3>Paid Media &amp; Performance</h3>
         <p>Data-driven ad campaigns across Google, Meta, and LinkedIn, built to maximize ROI and deliver real, measurable results.</p>
@@ -665,9 +795,9 @@
 
 <!-- BRANDS WE'VE WORKED WITH -->
 <div class="logos-strip">
-  <div class="wrap">
-    <p class="logos-lbl">Brands We've Worked With</p>
-    <div class="logos-row fu">
+  <p class="logos-lbl">Brands We've Worked With</p>
+  <div class="logos-track-wrap">
+    <div class="logos-track" id="logos-track">
       <a href="https://luxxmotors.com" target="_blank" rel="noopener" class="logo-item">Luxx Motors</a>
       <a href="https://amcpolska.com" target="_blank" rel="noopener" class="logo-item">AMC Polska</a>
       <a href="https://alog.services" target="_blank" rel="noopener" class="logo-item">Alog Services</a>
@@ -677,6 +807,16 @@
       <a href="https://web.facebook.com/share/r/1Avgfofct6/" target="_blank" rel="noopener" class="logo-item">Super Raffle GH</a>
       <a href="https://www.instagram.com/superraffleghana/" target="_blank" rel="noopener" class="logo-item">Super Raffle Ghana</a>
       <a href="http://www.youtube.com/@LAFABabes" target="_blank" rel="noopener" class="logo-item">LAFA Babes</a>
+      <!-- Duplicated for seamless loop -->
+      <a href="https://luxxmotors.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Luxx Motors</a>
+      <a href="https://amcpolska.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">AMC Polska</a>
+      <a href="https://alog.services" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Alog Services</a>
+      <a href="https://auranouvelle.shop" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Aura Nouvelle</a>
+      <a href="https://nobiagric.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Nobi Agric</a>
+      <a href="https://www.tiktok.com/@firsthalfpodcast" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">FirstHalf Podcast</a>
+      <a href="https://web.facebook.com/share/r/1Avgfofct6/" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Super Raffle GH</a>
+      <a href="https://www.instagram.com/superraffleghana/" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Super Raffle Ghana</a>
+      <a href="http://www.youtube.com/@LAFABabes" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">LAFA Babes</a>
     </div>
   </div>
 </div>
@@ -800,7 +940,7 @@
       <p>Small, focused, and deeply committed to your results.</p>
     </div>
     <div class="team-grid fu">
-      <div class="tc">
+      <div class="tc tilt-card">
         <div class="tc-av" style="background:linear-gradient(135deg,#2B2898,#FF5C2E)">K</div>
         <div class="tc-name">Ketsy, Founder</div>
         <div class="tc-role">Strategy &amp; Creative Director</div>
@@ -811,7 +951,7 @@
           <span class="tc-tag">Client Relations</span>
         </div>
       </div>
-      <div class="tc">
+      <div class="tc tilt-card">
         <div class="tc-av" style="background:linear-gradient(135deg,var(--coral),#f59e0b)">Co</div>
         <div class="tc-name">Co-Founder</div>
         <div class="tc-role">Technical &amp; Operations Lead</div>
@@ -999,15 +1139,66 @@
   /* ── Always open from the very top ── */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.addEventListener('load', () => {
-    // Always start at the top unless user clicked a specific anchor link
     if (!window.location.hash || window.location.hash === '#hero') {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
-    // Re-enable smooth scroll after load so nav links still animate
     document.documentElement.style.scrollBehavior = 'smooth';
   });
 
-  /* Rotating word */
+  /* ── PARTICLE CANVAS ── */
+  (function() {
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    for (let i = 0; i < 55; i++) {
+      particles.push({
+        x: Math.random() * W, y: Math.random() * H,
+        r: Math.random() * 2.5 + 0.5,
+        dx: (Math.random() - 0.5) * 0.35,
+        dy: (Math.random() - 0.5) * 0.35,
+        o: Math.random() * 0.5 + 0.1,
+        color: Math.random() > 0.5 ? '43,40,152' : '255,92,46'
+      });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        p.x += p.dx; p.y += p.dy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color},${p.o})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  /* ── CURSOR GLOW ── */
+  const glow = document.getElementById('cursor-glow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  /* ── SCROLL PROGRESS BAR ── */
+  const scrollBar = document.getElementById('scroll-bar');
+  window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    scrollBar.style.width = pct + '%';
+    document.getElementById('btt').classList.toggle('on', window.scrollY > 350);
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  /* ── ROTATING WORD ── */
   const words = ['Convert.','Grow.','Lead.','Stand Out.'];
   let wi = 0; const rw = document.getElementById('rw');
   rw.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
@@ -1019,46 +1210,114 @@
     }, 290);
   }, 2400);
 
-  /* Scroll fade-in */
-  const io = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); }), {threshold:0.08});
+  /* ── COUNTER ANIMATION ── */
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1600;
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.innerHTML = Math.floor(ease * target) + '<sup>' + suffix + '</sup>';
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* ── HERO CARD BARS ANIMATION ── */
+  function animateBars() {
+    const fills = document.querySelectorAll('.hc-fill');
+    const widths = ['88%','74%','45%'];
+    fills.forEach((f, i) => {
+      setTimeout(() => { f.style.width = widths[i]; }, 400 + i * 150);
+    });
+  }
+  setTimeout(animateBars, 800);
+
+  /* ── SCROLL FADE-IN + COUNTER TRIGGER ── */
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      const counter = e.target.querySelector('[data-target]') || (e.target.dataset.target ? e.target : null);
+      if (counter) animateCounter(counter);
+    }
+  }), { threshold: 0.08 });
   document.querySelectorAll('.fu').forEach(el => io.observe(el));
 
-  /* Back to top */
-  window.addEventListener('scroll', () => document.getElementById('btt').classList.toggle('on', window.scrollY > 350));
+  /* ── 3D TILT ON HOVER ── */
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-5px) scale(1.02)`;
+      card.style.boxShadow = `${-x * 12}px ${-y * 12}px 40px rgba(43,40,152,0.18)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
 
-  /* Portfolio filter */
+  /* ── RIPPLE ON BUTTONS ── */
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const r = btn.getBoundingClientRect();
+      const size = Math.max(r.width, r.height) * 2;
+      const ring = document.createElement('span');
+      ring.className = 'ripple-ring';
+      ring.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-r.left-size/2}px;top:${e.clientY-r.top-size/2}px`;
+      btn.appendChild(ring);
+      setTimeout(() => ring.remove(), 600);
+    });
+  });
+
+  /* ── BACK TO TOP ── */
+  // handled in scroll listener above
+
+  /* ── PORTFOLIO FILTER ── */
   function filterPF(cat, btn) {
     document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('on'));
     btn.classList.add('on');
-    document.querySelectorAll('#pfg .pf-card, #pfg .pf-add').forEach(c => {
+    document.querySelectorAll('#pfg .pf-card, #pfg .pf-add').forEach((c, i) => {
       const show = cat==='all' || c.dataset.cat===cat || c.classList.contains('pf-add');
-      c.style.opacity = show ? '1' : '0.2';
-      c.style.transform = show ? '' : 'scale(0.97)';
-      c.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+      c.style.transition = `opacity 0.35s ease ${i*0.04}s, transform 0.35s ease ${i*0.04}s`;
+      c.style.opacity = show ? '1' : '0.15';
+      c.style.transform = show ? '' : 'scale(0.95)';
     });
   }
 
-  /* Nav */
+  /* ── NAV ── */
   function toggleMenu() {
     const m = document.getElementById('mm');
     m.style.display = (m.style.display === 'block') ? 'none' : 'block';
   }
   function closeMenu() { document.getElementById('mm').style.display = 'none'; }
 
-  /* Form */
+  /* ── FORM ── */
   function handleSend(btn) {
     btn.textContent = '✓ Sent! We\'ll be in touch within 24 hours.';
     btn.style.background = '#10B981';
     btn.disabled = true;
   }
 
-  /* FAQ accordion */
+  /* ── FAQ ── */
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
+
+  /* ── BLOB PARALLAX ON MOUSE ── */
+  const b1 = document.querySelector('.b1'), b2 = document.querySelector('.b2');
+  document.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 30;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    if (b1) b1.style.transform = `translate(${x}px,${y}px)`;
+    if (b2) b2.style.transform = `translate(${-x*0.7}px,${-y*0.7}px)`;
+  });
 </script>
 </body>
 </html>
