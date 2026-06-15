@@ -323,11 +323,25 @@
     .logos-lbl { text-align: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 30px; }
     .logos-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 16px; }
     .logo-item {
-      padding: 10px 22px; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 10px;
-      font-size: 0.85rem; font-weight: 800; color: rgba(255,255,255,0.85); letter-spacing: 0.3px;
-      background: rgba(255,255,255,0.08); transition: var(--t);
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 10px 18px; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 10px;
+      font-size: 0.85rem; font-weight: 800; color: rgba(255,255,255,0.9); letter-spacing: 0.3px;
+      background: rgba(255,255,255,0.08); transition: var(--t); white-space: nowrap;
     }
-    .logo-item:hover { background: var(--coral); border-color: var(--coral); color: var(--white); transform: translateY(-2px); }
+    .logo-item:hover { background: var(--coral); border-color: var(--coral); color: var(--white); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255,92,46,0.35); }
+    .logo-item img {
+      height: 26px; width: auto; max-width: 52px;
+      object-fit: contain; border-radius: 4px;
+      filter: brightness(0) invert(1);
+      opacity: 0.85; transition: var(--t);
+    }
+    .logo-item:hover img { filter: brightness(0) invert(1); opacity: 1; }
+    .logo-item .li-logo-full {
+      height: 28px; width: auto; max-width: 80px;
+      object-fit: contain; border-radius: 4px;
+      filter: brightness(0) invert(1); opacity: 0.85; transition: var(--t);
+    }
+    .logo-item:hover .li-logo-full { opacity: 1; }
 
     /* ── SERVICES ── */
     .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
@@ -798,25 +812,25 @@
   <p class="logos-lbl">Brands We've Worked With</p>
   <div class="logos-track-wrap">
     <div class="logos-track" id="logos-track">
-      <a href="https://luxxmotors.com" target="_blank" rel="noopener" class="logo-item">Luxx Motors</a>
-      <a href="https://amcpolska.com" target="_blank" rel="noopener" class="logo-item">AMC Polska</a>
-      <a href="https://alog.services" target="_blank" rel="noopener" class="logo-item">Alog Services</a>
-      <a href="https://auranouvelle.shop" target="_blank" rel="noopener" class="logo-item">Aura Nouvelle</a>
-      <a href="https://nobiagric.com" target="_blank" rel="noopener" class="logo-item">Nobi Agric</a>
-      <a href="https://www.tiktok.com/@firsthalfpodcast" target="_blank" rel="noopener" class="logo-item">FirstHalf Podcast</a>
-      <a href="https://web.facebook.com/share/r/1Avgfofct6/" target="_blank" rel="noopener" class="logo-item">Super Raffle GH</a>
-      <a href="https://www.instagram.com/superraffleghana/" target="_blank" rel="noopener" class="logo-item">Super Raffle Ghana</a>
-      <a href="http://www.youtube.com/@LAFABabes" target="_blank" rel="noopener" class="logo-item">LAFA Babes</a>
+      <a href="https://luxxmotors.com" target="_blank" rel="noopener" class="logo-item"><img src="https://www.google.com/s2/favicons?domain=luxxmotors.com&sz=64" alt="">Luxx Motors</a>
+      <a href="https://amcpolska.com" target="_blank" rel="noopener" class="logo-item"><img src="https://www.google.com/s2/favicons?domain=amcpolska.com&sz=64" alt="">AMC Polska</a>
+      <a href="https://www.aloggroup.com" target="_blank" rel="noopener" class="logo-item"><img class="li-logo-full" src="https://aloggroup.com/images/alog-logo.png" alt="ALOG Group">ALOG Group</a>
+      <a href="https://auranouvelle.shop" target="_blank" rel="noopener" class="logo-item"><img src="https://www.google.com/s2/favicons?domain=auranouvelle.shop&sz=64" alt="">Aura Nouvelle</a>
+      <a href="https://nobiagric.com" target="_blank" rel="noopener" class="logo-item"><img src="https://www.google.com/s2/favicons?domain=nobiagric.com&sz=64" alt="">Nobi Agric</a>
+      <a href="https://www.tiktok.com/@firsthalfpodcast" target="_blank" rel="noopener" class="logo-item"><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=64" alt="">FirstHalf Podcast</a>
+      <a href="https://www.instagram.com/superraffleghana/" target="_blank" rel="noopener" class="logo-item"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="">Super Raffle Ghana</a>
+      <a href="http://www.youtube.com/@LAFABabes" target="_blank" rel="noopener" class="logo-item"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" alt="">LAFA Babes</a>
+      <a href="https://www.instagram.com/spark_ghana/" target="_blank" rel="noopener" class="logo-item"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="">Spark Ghana</a>
       <!-- Duplicated for seamless loop -->
-      <a href="https://luxxmotors.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Luxx Motors</a>
-      <a href="https://amcpolska.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">AMC Polska</a>
-      <a href="https://alog.services" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Alog Services</a>
-      <a href="https://auranouvelle.shop" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Aura Nouvelle</a>
-      <a href="https://nobiagric.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Nobi Agric</a>
-      <a href="https://www.tiktok.com/@firsthalfpodcast" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">FirstHalf Podcast</a>
-      <a href="https://web.facebook.com/share/r/1Avgfofct6/" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Super Raffle GH</a>
-      <a href="https://www.instagram.com/superraffleghana/" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">Super Raffle Ghana</a>
-      <a href="http://www.youtube.com/@LAFABabes" target="_blank" rel="noopener" class="logo-item" aria-hidden="true">LAFA Babes</a>
+      <a href="https://luxxmotors.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img src="https://www.google.com/s2/favicons?domain=luxxmotors.com&sz=64" alt="">Luxx Motors</a>
+      <a href="https://amcpolska.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img src="https://www.google.com/s2/favicons?domain=amcpolska.com&sz=64" alt="">AMC Polska</a>
+      <a href="https://www.aloggroup.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img class="li-logo-full" src="https://aloggroup.com/images/alog-logo.png" alt="">ALOG Group</a>
+      <a href="https://auranouvelle.shop" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img src="https://www.google.com/s2/favicons?domain=auranouvelle.shop&sz=64" alt="">Aura Nouvelle</a>
+      <a href="https://nobiagric.com" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img src="https://www.google.com/s2/favicons?domain=nobiagric.com&sz=64" alt="">Nobi Agric</a>
+      <a href="https://www.tiktok.com/@firsthalfpodcast" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=64" alt="">FirstHalf Podcast</a>
+      <a href="https://www.instagram.com/superraffleghana/" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="">Super Raffle Ghana</a>
+      <a href="http://www.youtube.com/@LAFABabes" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" alt="">LAFA Babes</a>
+      <a href="https://www.instagram.com/spark_ghana/" target="_blank" rel="noopener" class="logo-item" aria-hidden="true"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="">Spark Ghana</a>
     </div>
   </div>
 </div>
