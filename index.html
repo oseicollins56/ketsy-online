@@ -25,8 +25,7 @@
       --t:       all 0.28s cubic-bezier(.4,0,.2,1);
       --f:       'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
     }
-    html { scroll-behavior: smooth; }
-    /* Prevent browser from restoring old scroll on reload */
+    /* Scroll behaviour set to auto on load; JS enables smooth after first paint */
     html, body { scroll-behavior: auto; }
     body { font-family: var(--f); color: var(--dark); background: var(--white); -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
@@ -530,24 +529,6 @@
     .pr li::before { content:'✓'; color: var(--blue); font-weight: 900; flex-shrink: 0; }
     .pr-feat li::before { color: #B8B6F0; }
 
-    /* ── FAQ ── */
-    .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
-    .faq-item { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; background: var(--white); transition: var(--t); }
-    .faq-item.open { border-color: var(--blue); }
-    .faq-q {
-      width: 100%; text-align: left; padding: 18px 22px; background: none; border: none;
-      font-family: var(--f); font-size: 0.97rem; font-weight: 700; color: var(--dark);
-      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
-      transition: var(--t);
-    }
-    .faq-q:hover { color: var(--blue); }
-    .faq-icon { font-size: 1.4rem; font-weight: 300; color: var(--blue); flex-shrink: 0; transition: transform 0.28s ease; line-height: 1; }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; padding: 0 22px; font-size: 0.9rem; color: var(--grey); line-height: 1.75; }
-    .faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
-    .faq-divider { height: 1px; background: var(--border); margin: 0 22px; display: none; }
-    .faq-item.open .faq-divider { display: block; }
-
     /* ── CONTACT ── */
     .ct-wrap { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; }
     @media (max-width: 820px) { .ct-wrap { grid-template-columns: 1fr; } }
@@ -651,7 +632,6 @@
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#contact" class="btn btn-out btn-sm" style="padding:8px 18px;">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -666,7 +646,6 @@
     <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
     <li><a href="#team" onclick="closeMenu()">Team</a></li>
     <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
-    <li><a href="#contact" onclick="closeMenu()">FAQ</a></li>
     <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     <li style="margin-top:8px;"><a href="#contact" onclick="closeMenu()" class="btn btn-blue" style="width:100%;justify-content:center;">Get Started</a></li>
   </ul>
@@ -1102,7 +1081,7 @@
         <div class="ft-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="#process">How We Work</a></li>
+            <li><a href="#services">Our Services</a></li>
             <li><a href="#portfolio">Our Work</a></li>
             <li><a href="#team">The Team</a></li>
             <li><a href="#pricing">Pricing</a></li>
@@ -1269,9 +1248,6 @@
     });
   });
 
-  /* ── BACK TO TOP ── */
-  // handled in scroll listener above
-
   /* ── PORTFOLIO FILTER ── */
   function filterPF(cat, btn) {
     document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('on'));
@@ -1296,14 +1272,6 @@
     btn.textContent = '✓ Sent! We\'ll be in touch within 24 hours.';
     btn.style.background = '#10B981';
     btn.disabled = true;
-  }
-
-  /* ── FAQ ── */
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
   }
 
   /* ── BLOB PARALLAX ON MOUSE ── */
