@@ -974,7 +974,7 @@
         <div class="pr-type">Retainer-Based</div>
         <h3>Growth</h3>
         <div class="pr-desc">A long-term partnership. We become your marketing team.</div>
-        <div class="pr-price">From GHS 1,800 <span>/ month</span></div>
+        <div class="pr-price">From GHS 2,500 <span>/ month</span></div>
         <ul>
           <li>Social media (3 platforms)</li>
           <li>Monthly content production</li>
@@ -1031,29 +1031,35 @@
       </div>
       <div class="ct-form fu">
         <h3>Book a Free Strategy Session</h3>
-        <div class="fr2">
-          <div class="fg"><label>First Name</label><input type="text" placeholder="John"></div>
-          <div class="fg"><label>Last Name</label><input type="text" placeholder="Mensah"></div>
-        </div>
-        <div class="fg"><label>Email</label><input type="email" placeholder="john@yourcompany.com"></div>
-        <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+233 20 000 0000"></div>
-        <div class="fg">
-          <label>Service</label>
-          <select>
-            <option value="">Select a service...</option>
-            <option>Social Media Management</option>
-            <option>Website Design &amp; Management</option>
-            <option>Brand Management</option>
-            <option>Content Production</option>
-            <option>Paid Media &amp; Performance</option>
-            <option>Full-Service Retainer</option>
-          </select>
-        </div>
-        <div class="fg"><label>Your Message</label><textarea placeholder="Tell us about your brand and goals..."></textarea></div>
-        <button class="btn btn-coral" style="width:100%;justify-content:center;font-size:0.95rem;padding:15px;" onclick="handleSend(this)">
-          Send Message →
-        </button>
-        <p style="color:var(--grey);font-size:0.76rem;text-align:center;margin-top:10px;">We reply within 24 hours. No spam, ever.</p>
+        <form id="contact-form" action="https://formsubmit.co/ketsyonline@gmail.com" method="POST" onsubmit="handleSend(event)">
+          <!-- Formsubmit.co config — no account needed -->
+          <input type="hidden" name="_subject" value="New enquiry — Ketsy Online website">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://oseicollins56.github.io/ketsy-online/#contact">
+          <div class="fr2">
+            <div class="fg"><label>First Name</label><input type="text" name="first_name" placeholder="John" required></div>
+            <div class="fg"><label>Last Name</label><input type="text" name="last_name" placeholder="Mensah" required></div>
+          </div>
+          <div class="fg"><label>Email</label><input type="email" name="email" placeholder="john@yourcompany.com" required></div>
+          <div class="fg"><label>Phone / WhatsApp</label><input type="tel" name="phone" placeholder="+233 20 000 0000"></div>
+          <div class="fg">
+            <label>Service</label>
+            <select name="service">
+              <option value="">Select a service...</option>
+              <option>Social Media Management</option>
+              <option>Website Design &amp; Management</option>
+              <option>Brand Management</option>
+              <option>Content Production</option>
+              <option>Paid Media &amp; Performance</option>
+              <option>Full-Service Retainer</option>
+            </select>
+          </div>
+          <div class="fg"><label>Your Message</label><textarea name="message" placeholder="Tell us about your brand and goals..."></textarea></div>
+          <button type="submit" id="send-btn" class="btn btn-coral" style="width:100%;justify-content:center;font-size:0.95rem;padding:15px;">
+            Send Message →
+          </button>
+          <p id="form-status" style="color:var(--grey);font-size:0.76rem;text-align:center;margin-top:10px;">We reply within 24 hours. No spam, ever.</p>
+        </form>
       </div>
     </div>
   </div>
@@ -1274,10 +1280,11 @@
   function closeMenu() { document.getElementById('mm').style.display = 'none'; }
 
   /* ── FORM ── */
-  function handleSend(btn) {
-    btn.textContent = '✓ Sent! We\'ll be in touch within 24 hours.';
-    btn.style.background = '#10B981';
+  function handleSend(e) {
+    const btn = document.getElementById('send-btn');
+    btn.textContent = 'Sending…';
     btn.disabled = true;
+    // Formsubmit.co handles the POST — just let the form submit normally
   }
 
   /* ── BLOB PARALLAX ON MOUSE ── */
